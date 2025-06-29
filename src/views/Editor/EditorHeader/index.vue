@@ -16,6 +16,7 @@
           }">
             <PopoverMenuItem>导入 pptist 文件</PopoverMenuItem>
           </FileInput>
+          <PopoverMenuItem @click="openJSONImportDialog(); mainMenuVisible = false">导入 JSON 数据</PopoverMenuItem>
           <PopoverMenuItem @click="setDialogForExport('pptx')">导出文件</PopoverMenuItem>
           <PopoverMenuItem @click="resetSlides(); mainMenuVisible = false">重置幻灯片</PopoverMenuItem>
           <PopoverMenuItem @click="openMarkupPanel(); mainMenuVisible = false">幻灯片类型标注</PopoverMenuItem>
@@ -77,6 +78,36 @@
     </Drawer>
 
     <FullscreenSpin :loading="exporting" tip="正在导入..." />
+
+    <Drawer
+      :width="500"
+      v-model:visible="jsonImportVisible"
+      placement="right"
+    >
+      <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 10px; font-weight: bold;">请粘贴JSON数据:</div>
+        <textarea 
+          v-model="jsonInputValue"
+          placeholder="请粘贴PPTX解析后的JSON数据..."
+          style="width: 100%; height: 300px; border: 1px solid #ccc; border-radius: 4px; padding: 10px; font-family: monospace; font-size: 12px;"
+        ></textarea>
+      </div>
+      <div style="text-align: right;">
+        <button 
+          @click="jsonImportVisible = false"
+          style="margin-right: 10px; padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer;"
+        >
+          取消
+        </button>
+        <button 
+          @click="handleJSONImport"
+          style="padding: 8px 16px; border: none; border-radius: 4px; background: #1890ff; color: white; cursor: pointer;"
+        >
+          导入
+        </button>
+      </div>
+      <template v-slot:title>导入 JSON 数据</template>
+    </Drawer>
   </div>
 </template>
 
@@ -101,14 +132,16 @@ const mainStore = useMainStore()
 const slidesStore = useSlidesStore()
 const { title } = storeToRefs(slidesStore)
 const { enterScreening, enterScreeningFromStart } = useScreening()
-const { importSpecificFile, importPPTXFile, exporting } = useImport()
+const { importSpecificFile, importPPTXFile, importFromJSON, exporting } = useImport()
 const { resetSlides } = useSlideHandler()
 
 const mainMenuVisible = ref(false)
 const hotkeyDrawerVisible = ref(false)
+const jsonImportVisible = ref(false)
 const editingTitle = ref(false)
 const titleInputRef = ref<InstanceType<typeof Input>>()
 const titleValue = ref('')
+const jsonInputValue = ref('')
 
 const startEditTitle = () => {
   titleValue.value = title.value
@@ -137,6 +170,27 @@ const openMarkupPanel = () => {
 
 const openAIPPTDialog = () => {
   mainStore.setAIPPTDialogState(true)
+}
+
+const openJSONImportDialog = () => {
+  jsonInputValue.value = ''
+  jsonImportVisible.value = true
+}
+
+const handleJSONImport = () => {
+  if (!jsonInputValue.value.trim()) {
+    alert('请输入JSON数据')
+    return
+  }
+  
+  try {
+    const jsonData = JSON.parse(jsonInputValue.value)
+    importFromJSON(jsonData)
+    jsonImportVisible.value = false
+    jsonInputValue.value = ''
+  } catch (error) {
+    alert('JSON格式错误，请检查输入')
+  }
 }
 </script>
 

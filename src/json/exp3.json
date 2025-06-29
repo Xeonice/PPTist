@@ -1,0 +1,847 @@
+{
+  "title": "未命名演示文稿",
+  "width": 1000,
+  "height": 562.5,
+  "theme": {
+    "themeColors": [
+      "#5b9bd5",
+      "#ed7d31",
+      "#a5a5a5",
+      "#ffc000",
+      "#4472c4",
+      "#70ad47"
+    ],
+    "fontColor": "#333",
+    "fontName": "",
+    "backgroundColor": "#fff",
+    "shadow": {
+      "h": 3,
+      "v": 3,
+      "blur": 2,
+      "color": "#808080"
+    },
+    "outline": {
+      "width": 2,
+      "color": "#525252",
+      "style": "solid"
+    }
+  },
+  "slides": [
+    {
+      "id": "H8M2Hrz5FC",
+      "tag": "content",
+      "elements": [
+        {
+          "tag": "noEdit",
+          "type": "shape",
+          "id": "iUwlaNTNDp",
+          "left": 35.22503399335706,
+          "top": 26.13037199341284,
+          "width": 940.5577299412915,
+          "height": 54.79647749510763,
+          "viewBox": [
+            940.5577299412915,
+            54.79647749510763
+          ],
+          "path": "M 13.221243116552133 0 L 927.3364868247394 0 Q 940.5577299412915 0 940.5577299412915 13.221243116552133 L 940.5577299412915 41.5752343785555 Q 940.5577299412915 54.79647749510763 927.3364868247394 54.79647749510763 L 13.221243116552133 54.79647749510763 Q 0 54.79647749510763 0 41.5752343785555 L 0 13.221243116552133 Q 0 0 13.221243116552133 0 Z",
+          "fixedRatio": false,
+          "rotate": 0,
+          "pathFormula": "roundRect",
+          "isDefault": false,
+          "fill": "#fad9ccff",
+          "keypoints": [
+            0.24127906976744187
+          ],
+          "text": {
+            "content": "",
+            "defaultFontName": "",
+            "defaultColor": "#333",
+            "align": "middle"
+          }
+        },
+        {
+          "type": "text",
+          "tag": "title",
+          "id": "OilGejrd77",
+          "left": 40.282842693282554,
+          "top": 25.028610740966656,
+          "width": 873.9464952160347,
+          "height": 56,
+          "content": "<div  style=\"\"><p  style=\"\"><span  style=\"color:#333333ff;--colortype:dk1;font-family:Microsoft Yahei;font-size:24px;font-weight:bold;\">利润分析</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "fit": "resize"
+        },
+        {
+          "tag": "",
+          "type": "shape",
+          "id": "v2s4qoQ0R7",
+          "left": 469.87648709255564,
+          "top": 375.5,
+          "width": 80,
+          "height": 80,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 50 50 0 1 1 100 200 A 50 50 0 1 1 100 0 Z",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "width": 12,
+            "style": "solid",
+            "color": "#dd2025ff"
+          },
+          "from": "list",
+          "fill": "rgba(0,132,255,0)",
+          "text": {
+            "content": "",
+            "defaultFontName": "",
+            "defaultColor": "#333",
+            "align": "middle"
+          }
+        },
+        {
+          "tag": "",
+          "type": "shape",
+          "id": "qqCgMy_fW-",
+          "left": 469.87648709255564,
+          "top": 261,
+          "width": 80,
+          "height": 80,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 50 50 0 1 1 100 200 A 50 50 0 1 1 100 0 Z",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "width": 12,
+            "style": "solid",
+            "color": "#dd2025ff"
+          },
+          "from": "list",
+          "fill": "rgba(0,132,255,0)",
+          "text": {
+            "content": "",
+            "defaultFontName": "",
+            "defaultColor": "#333",
+            "align": "middle"
+          }
+        },
+        {
+          "tag": "",
+          "type": "shape",
+          "id": "Kd4q_y0FBt",
+          "left": 469.87648709255564,
+          "top": 140,
+          "width": 80,
+          "height": 80,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 50 50 0 1 1 100 200 A 50 50 0 1 1 100 0 Z",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "width": 12,
+            "style": "solid",
+            "color": "#dd2025ff"
+          },
+          "from": "list",
+          "fill": "rgba(0,132,255,0)",
+          "text": {
+            "content": "",
+            "defaultFontName": "",
+            "defaultColor": "#333",
+            "align": "middle"
+          }
+        },
+        {
+          "tag": "",
+          "type": "line",
+          "id": "CEFW2R7enA",
+          "left": 451.18008899603603,
+          "top": 180,
+          "start": [
+            19.076832879128233,
+            0
+          ],
+          "end": [
+            0,
+            0
+          ],
+          "points": [
+            "",
+            "dot"
+          ],
+          "style": "solid",
+          "width": 2,
+          "from": "list",
+          "color": "#dd2025ff"
+        },
+        {
+          "tag": "",
+          "type": "line",
+          "id": "Ptiw030YIW",
+          "left": 549.4960523099469,
+          "top": 301,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            19.43019114623121,
+            0
+          ],
+          "points": [
+            "",
+            "dot"
+          ],
+          "style": "solid",
+          "width": 2,
+          "from": "list",
+          "color": "#dd2025ff"
+        },
+        {
+          "tag": "",
+          "type": "line",
+          "id": "PZYWjIGNKz",
+          "left": 450.35040650406495,
+          "top": 415.5,
+          "start": [
+            19.147880819621662,
+            0
+          ],
+          "end": [
+            0,
+            0
+          ],
+          "points": [
+            "",
+            "dot"
+          ],
+          "style": "solid",
+          "width": 2,
+          "from": "list",
+          "color": "#dd2025ff"
+        },
+        {
+          "tag": "",
+          "type": "text",
+          "id": "gsUo1AXtt_",
+          "left": 474.9567390226654,
+          "top": 145.84112149532712,
+          "width": 69.0786265745631,
+          "height": 77,
+          "content": "<div  style=\"\"><p  style=\"text-align:center;\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:38px;font-weight:bold;\">01</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "fit": "none",
+          "valign": "middle",
+          "from": "list"
+        },
+        {
+          "tag": "",
+          "type": "text",
+          "id": "CWGBvE30_H",
+          "left": 462.10627173294574,
+          "top": 368.1542056074766,
+          "width": 95.94778545306785,
+          "height": 74,
+          "content": "<div  style=\"\"><p  style=\"text-align:center;\"><span  style=\"color:#dd2025ff;font-size:36px;font-weight:bold;--colortype:accent1;\">03</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "valign": "middle",
+          "fit": "none",
+          "from": "list"
+        },
+        {
+          "tag": "",
+          "type": "text",
+          "id": "wHvKSVSbx3",
+          "left": 462.10627173294574,
+          "top": 251.31775700934574,
+          "width": 95.94778545306784,
+          "height": 74,
+          "content": "<div  style=\"\"><p  style=\"text-align:center;\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:36px;font-weight:bold;\">02</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "fit": "none",
+          "valign": "middle",
+          "from": "list"
+        },
+        {
+          "tag": "item_title",
+          "index": 0,
+          "type": "text",
+          "id": "K-E_eha-L6",
+          "left": 97.35678818078492,
+          "top": 140,
+          "width": 340,
+          "height": 44,
+          "content": "<div  style=\"\"><p  style=\"text-align:right;\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:24px;font-weight:bold;\">营收结构分析</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_c",
+          "index": 0,
+          "type": "text",
+          "id": "FgSf6Ls64Y",
+          "left": 97.35678818078489,
+          "top": 179.3,
+          "width": 340,
+          "height": 75.171875,
+          "content": "<div  style=\"\"><p  style=\"text-align:right;\"><span  style=\"color:#333333ff;font-size:16px;--colortype:dk1;\">特斯拉营收主要来源于汽车销售、能源业务和服务收入。汽车销售占比最高，能源业务增长迅速，服务收入保持稳定。</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1.15,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_title",
+          "index": 1,
+          "type": "text",
+          "id": "cUVeG5VqjF",
+          "left": 572.6,
+          "top": 223,
+          "width": 340,
+          "height": 44,
+          "content": "<div  style=\"\"><p  style=\"\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:24px;font-weight:bold;\">毛利率表现</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_c",
+          "index": 1,
+          "type": "text",
+          "id": "3PZfj0Q6lf",
+          "left": 572.6432118192149,
+          "top": 267,
+          "width": 340,
+          "height": 75.171875,
+          "content": "<div  style=\"\"><p  style=\"\"><span  style=\"color:#333333ff;font-size:16px;--colortype:dk1;\">特斯拉毛利率显著高于传统车企，得益于规模化生产、垂直整合和电池成本下降。2023年毛利率维持在20%以上。</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1.15,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_title",
+          "index": 2,
+          "type": "text",
+          "id": "Di11d9Qf9v",
+          "left": 97.35678818078492,
+          "top": 302,
+          "width": 340,
+          "height": 44,
+          "content": "<div  style=\"\"><p  style=\"text-align:right;\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:24px;font-weight:bold;\">盈利驱动因素</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_c",
+          "index": 2,
+          "type": "text",
+          "id": "GnaQhSpjTF",
+          "left": 97.35678818078489,
+          "top": 346,
+          "width": 340,
+          "height": 77.5625,
+          "content": "<div  style=\"\"><p  style=\"text-align:right;\"><span  style=\"color:#333333ff;font-size:16px;--colortype:dk1;\">软件订阅、碳积分销售和工厂效率提升是特斯拉核心盈利驱动力，未来自动驾驶技术或进一步拉动利润增长。</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1.2,
+          "from": "list",
+          "fit": "resize"
+        }
+      ],
+      "background": {
+        "type": "image",
+        "themeColor": {
+          "color": "#ffffffff",
+          "colorType": "lt1"
+        },
+        "image": {
+          "src": "https://sgw-dx.xf-yun.com/api/v1/sparkdesk/_19052329831_oYPd9I1735544922921-07166200527437461.png?authorization=c2ltcGxlLWp3dCBhaz1zcGFya2Rlc2s4MDAwMDAwMDAwMDE7ZXhwPTMzMTIzNDQ5MzA7YWxnbz1obWFjLXNoYTI1NjtzaWc9bGJwUEU1QXkvakZ5RzMwMUtibFRaNG5HMTBFdmJzT1J6ZkFvWXMwSTcrbz0=&x_location=7YfmxI7B7uKO7jlRxIftd60Zg5D=",
+          "size": "cover"
+        }
+      },
+      "remark": "",
+      "pageId": "49ca174eb8b14b219ed8e617716fe6e1",
+      "aiImageStatus": "done"
+    },
+    {
+      "id": "PINQXLtDZc",
+      "tag": "content",
+      "elements": [
+        {
+          "tag": "noEdit",
+          "type": "shape",
+          "id": "-i2bZ_6E-I",
+          "left": 35.22503399335706,
+          "top": 26.13037199341284,
+          "width": 940.5577299412915,
+          "height": 54.79647749510763,
+          "viewBox": [
+            940.5577299412915,
+            54.79647749510763
+          ],
+          "path": "M 13.221243116552133 0 L 927.3364868247394 0 Q 940.5577299412915 0 940.5577299412915 13.221243116552133 L 940.5577299412915 41.5752343785555 Q 940.5577299412915 54.79647749510763 927.3364868247394 54.79647749510763 L 13.221243116552133 54.79647749510763 Q 0 54.79647749510763 0 41.5752343785555 L 0 13.221243116552133 Q 0 0 13.221243116552133 0 Z",
+          "fixedRatio": false,
+          "rotate": 0,
+          "pathFormula": "roundRect",
+          "isDefault": false,
+          "fill": "#fad9ccff",
+          "keypoints": [
+            0.24127906976744187
+          ],
+          "text": {
+            "content": "",
+            "defaultFontName": "",
+            "defaultColor": "#333",
+            "align": "middle"
+          }
+        },
+        {
+          "type": "text",
+          "tag": "title",
+          "id": "sBi-ykiuhW",
+          "left": 40.282842693282554,
+          "top": 25.028610740966656,
+          "width": 873.9464952160347,
+          "height": 56,
+          "content": "<div  style=\"\"><p  style=\"\"><span  style=\"color:#333333ff;--colortype:dk1;font-family:Microsoft Yahei;font-size:24px;font-weight:bold;\">利润分析</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "fit": "resize"
+        },
+        {
+          "tag": "",
+          "type": "shape",
+          "id": "PY6hgSAb63",
+          "left": 465.5038989640028,
+          "top": 374.63329866527994,
+          "width": 80,
+          "height": 80,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 50 50 0 1 1 100 200 A 50 50 0 1 1 100 0 Z",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "width": 12,
+            "style": "solid",
+            "color": "#dd2025ff"
+          },
+          "from": "list",
+          "fill": "rgba(0,132,255,0)",
+          "text": {
+            "content": "",
+            "defaultFontName": "",
+            "defaultColor": "#333",
+            "align": "middle"
+          }
+        },
+        {
+          "tag": "",
+          "type": "shape",
+          "id": "CMPVNoVHJH",
+          "left": 465.5038989640028,
+          "top": 262.171875,
+          "width": 80,
+          "height": 80,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 50 50 0 1 1 100 200 A 50 50 0 1 1 100 0 Z",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "width": 12,
+            "style": "solid",
+            "color": "#dd2025ff"
+          },
+          "from": "list",
+          "fill": "rgba(0,132,255,0)",
+          "text": {
+            "content": "",
+            "defaultFontName": "",
+            "defaultColor": "#333",
+            "align": "middle"
+          }
+        },
+        {
+          "tag": "",
+          "type": "shape",
+          "id": "t_0oWzzdGu",
+          "left": 465.50389896400276,
+          "top": 139.3,
+          "width": 80,
+          "height": 80,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 50 50 0 1 1 100 200 A 50 50 0 1 1 100 0 Z",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "width": 12,
+            "style": "solid",
+            "color": "#dd2025ff"
+          },
+          "from": "list",
+          "fill": "rgba(0,132,255,0)",
+          "text": {
+            "content": "",
+            "defaultFontName": "",
+            "defaultColor": "#333",
+            "align": "middle"
+          }
+        },
+        {
+          "tag": "",
+          "type": "line",
+          "id": "HSP1R_coe2",
+          "left": 451.18008899603603,
+          "top": 180,
+          "start": [
+            19.076832879128233,
+            0
+          ],
+          "end": [
+            0,
+            0
+          ],
+          "points": [
+            "",
+            "dot"
+          ],
+          "style": "solid",
+          "width": 2,
+          "from": "list",
+          "color": "#dd2025ff"
+        },
+        {
+          "tag": "",
+          "type": "line",
+          "id": "AeomtuXyra",
+          "left": 549.4960523099469,
+          "top": 301,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            19.43019114623121,
+            0
+          ],
+          "points": [
+            "",
+            "dot"
+          ],
+          "style": "solid",
+          "width": 2,
+          "from": "list",
+          "color": "#dd2025ff"
+        },
+        {
+          "tag": "",
+          "type": "line",
+          "id": "-UxGEfhDtv",
+          "left": 450.35040650406495,
+          "top": 415.5,
+          "start": [
+            19.147880819621662,
+            0
+          ],
+          "end": [
+            0,
+            0
+          ],
+          "points": [
+            "",
+            "dot"
+          ],
+          "style": "solid",
+          "width": 2,
+          "from": "list",
+          "color": "#dd2025ff"
+        },
+        {
+          "tag": "",
+          "type": "text",
+          "id": "n-DsbadioT",
+          "left": 470.96458567672124,
+          "top": 142.3,
+          "width": 69.0786265745631,
+          "height": 77,
+          "content": "<div  style=\"\"><p  style=\"text-align:center;\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:38px;font-weight:bold;\">01</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "fit": "none",
+          "valign": "middle",
+          "from": "list"
+        },
+        {
+          "tag": "",
+          "type": "text",
+          "id": "f0rhRJux0V",
+          "left": 457.5300062374689,
+          "top": 376.63329866527994,
+          "width": 95.94778545306785,
+          "height": 74,
+          "content": "<div  style=\"\"><p  style=\"text-align:center;\"><span  style=\"color:#dd2025ff;font-size:36px;font-weight:bold;--colortype:accent1;\">03</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "valign": "middle",
+          "fit": "none",
+          "from": "list"
+        },
+        {
+          "tag": "",
+          "type": "text",
+          "id": "iheWjspx6m",
+          "left": 457.5300062374689,
+          "top": 263.171875,
+          "width": 95.94778545306784,
+          "height": 74,
+          "content": "<div  style=\"\"><p  style=\"text-align:center;\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:36px;font-weight:bold;\">02</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "fit": "none",
+          "valign": "middle",
+          "from": "list"
+        },
+        {
+          "tag": "item_title",
+          "index": 0,
+          "type": "text",
+          "id": "E4NjBwSRaH",
+          "left": 97.35678818078492,
+          "top": 140,
+          "width": 340,
+          "height": 44,
+          "content": "<div  style=\"\"><p  style=\"text-align:right;\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:24px;font-weight:bold;\">营收结构分析</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_c",
+          "index": 0,
+          "type": "text",
+          "id": "wiVjBq9hUf",
+          "left": 97.35678818078489,
+          "top": 179.3,
+          "width": 340,
+          "height": 75.171875,
+          "content": "<div  style=\"\"><p  style=\"text-align:right;\"><span  style=\"color:#333333ff;font-size:16px;--colortype:dk1;\">特斯拉营收主要来源于汽车销售、能源业务和服务收入。汽车销售占比最高，能源业务增长迅速，服务收入保持稳定。</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1.15,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_title",
+          "index": 1,
+          "type": "text",
+          "id": "fBTQA-19oT",
+          "left": 572.6,
+          "top": 223,
+          "width": 340,
+          "height": 44,
+          "content": "<div  style=\"\"><p  style=\"\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:24px;font-weight:bold;\">毛利率表现</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_c",
+          "index": 1,
+          "type": "text",
+          "id": "ugI97d3VCt",
+          "left": 572.6432118192149,
+          "top": 267,
+          "width": 340,
+          "height": 75.171875,
+          "content": "<div  style=\"\"><p  style=\"\"><span  style=\"color:#333333ff;font-size:16px;--colortype:dk1;\">特斯拉毛利率显著高于传统车企，得益于规模化生产、垂直整合和电池成本下降。2023年毛利率维持在20%以上。</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1.15,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_title",
+          "index": 2,
+          "type": "text",
+          "id": "5WQ6it1QQc",
+          "left": 97.35678818078492,
+          "top": 302,
+          "width": 340,
+          "height": 44,
+          "content": "<div  style=\"\"><p  style=\"text-align:right;\"><span  style=\"color:#dd2025ff;--colortype:accent1;font-size:24px;font-weight:bold;\">盈利驱动因素</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1,
+          "from": "list",
+          "fit": "resize"
+        },
+        {
+          "tag": "item_c",
+          "index": 2,
+          "type": "text",
+          "id": "nYOkix2Fnr",
+          "left": 97.35678818078489,
+          "top": 346,
+          "width": 340,
+          "height": 77.5625,
+          "content": "<div  style=\"\"><p  style=\"text-align:right;\"><span  style=\"color:#333333ff;font-size:16px;--colortype:dk1;\">软件订阅、碳积分销售和工厂效率提升是特斯拉核心盈利驱动力，未来自动驾驶技术或进一步拉动利润增长。</span></p></div>",
+          "rotate": 0,
+          "defaultFontName": "PingFang SC",
+          "defaultColor": {
+            "color": "#333333",
+            "colorType": "dk1"
+          },
+          "vertical": false,
+          "lineHeight": 1.2,
+          "from": "list",
+          "fit": "resize"
+        }
+      ],
+      "background": {
+        "type": "image",
+        "themeColor": {
+          "color": "#ffffffff",
+          "colorType": "lt1"
+        },
+        "image": {
+          "src": "https://sgw-dx.xf-yun.com/api/v1/sparkdesk/_19052329831_oYPd9I1735544922921-07166200527437461.png?authorization=c2ltcGxlLWp3dCBhaz1zcGFya2Rlc2s4MDAwMDAwMDAwMDE7ZXhwPTMzMTIzNDQ5MzA7YWxnbz1obWFjLXNoYTI1NjtzaWc9bGJwUEU1QXkvakZ5RzMwMUtibFRaNG5HMTBFdmJzT1J6ZkFvWXMwSTcrbz0=&x_location=7YfmxI7B7uKO7jlRxIftd60Zg5D=",
+          "size": "cover"
+        }
+      },
+      "remark": "",
+      "pageId": "49ca174eb8b14b219ed8e617716fe6e1",
+      "aiImageStatus": "done"
+    }
+  ]
+}
