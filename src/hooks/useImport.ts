@@ -1049,7 +1049,7 @@ export default () => {
                   width: +(el.borderWidth * ratio).toFixed(2),
                   style: el.borderType,
                 },
-                fill: el.fill.type === "color" ? el.fill.value : "",
+                fill: el.fill?.type === "color" ? el.fill.value : "",
                 vertical: el.isVertical,
               };
               if (el.shadow) {
