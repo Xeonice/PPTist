@@ -27,6 +27,7 @@ export default {
     return axios.get(`./mocks/${filename}.json`)
   },
 
+  // 从远程服务器获取数据文件（已改为使用本地 getMockData）
   getFileData(filename: string): Promise<any> {
     return axios.get(`${ASSET_URL}/data/${filename}.json`)
   },
