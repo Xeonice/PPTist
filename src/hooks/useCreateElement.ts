@@ -178,6 +178,7 @@ export default () => {
       defaultFontName: theme.value.fontName,
       defaultColor: theme.value.fontColor,
       vertical,
+      fit: 'resize',
     }, () => {
       setTimeout(() => {
         const editorRef: HTMLElement | null = document.querySelector(`#editable-element-${id} .ProseMirror`)

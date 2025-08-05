@@ -357,6 +357,7 @@ export default () => {
                 },
                 fill: el.fill.type === 'color' ? el.fill.value : '',
                 vertical: el.isVertical,
+                fit: 'resize',
               }
               if (el.shadow) {
                 textEl.shadow = {
