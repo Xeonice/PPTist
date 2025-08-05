@@ -68,6 +68,15 @@
         <ColorButton :color="fill" />
       </Popover>
     </div>
+    <div class="row">
+      <div style="width: 40%;">文本框调整：</div>
+      <Select 
+        style="width: 60%;" 
+        :value="textFit" 
+        @update:value="value => updateTextFit(value as 'none' | 'shrink' | 'resize')"
+        :options="fitOptions"
+      />
+    </div>
 
     <Divider />
     <ElementOutline />
@@ -186,6 +195,7 @@ const fill = ref<string>('#000')
 const lineHeight = ref<number>()
 const wordSpace = ref<number>()
 const paragraphSpace = ref<number>()
+const textFit = ref<'none' | 'shrink' | 'resize'>('resize')
 
 watch(handleElement, () => {
   if (!handleElement.value || handleElement.value.type !== 'text') return
@@ -194,12 +204,18 @@ watch(handleElement, () => {
   lineHeight.value = handleElement.value.lineHeight || 1.5
   wordSpace.value = handleElement.value.wordSpace || 0
   paragraphSpace.value = handleElement.value.paragraphSpace === undefined ? 5 : handleElement.value.paragraphSpace
+  textFit.value = handleElement.value.fit || 'resize'
   emitter.emit(EmitterEvents.SYNC_RICH_TEXT_ATTRS_TO_STORE)
 }, { deep: true, immediate: true })
 
 const lineHeightOptions = [0.9, 1.0, 1.15, 1.2, 1.4, 1.5, 1.8, 2.0, 2.5, 3.0]
 const wordSpaceOptions = [0, 1, 2, 3, 4, 5, 6, 8, 10]
 const paragraphSpaceOptions = [0, 5, 10, 15, 20, 25, 30, 40, 50, 80]
+const fitOptions = [
+  { label: '根据文字调整大小', value: 'resize' },
+  { label: '不自动调整', value: 'none' },
+  { label: '溢出时文本缩小', value: 'shrink' },
+]
 
 // 设置行高
 const updateLineHeight = (value: number) => {
@@ -219,6 +235,11 @@ const updateWordSpace = (value: number) => {
 // 设置文本框填充
 const updateFill = (value: string) => {
   updateElement({ fill: value })
+}
+
+// 设置文本框调整
+const updateTextFit = (fit: 'none' | 'shrink' | 'resize') => {
+  updateElement({ fit })
 }
 
 // 发送富文本设置命令（批量）
