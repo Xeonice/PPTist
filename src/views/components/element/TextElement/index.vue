@@ -15,6 +15,11 @@
     >
       <div 
         class="element-content"
+        :class="[
+          elementInfo.valign,
+          `fit-${elementInfo.fit || 'resize'}`,
+          elementInfo.vertical ? 'vertical' : 'horizontal',
+        ]"
         ref="elementRef"
         :style="{
           width: elementInfo.vertical ? 'auto' : elementInfo.width + 'px',
@@ -31,6 +36,7 @@
         v-contextmenu="contextmenus"
         @mousedown="$event => handleSelectElement($event)"
         @touchstart="$event => handleSelectElement($event)"
+        @click="handleFocus"
       >
         <ElementOutline
           :width="elementInfo.width"
@@ -71,6 +77,7 @@ import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import ElementOutline from '@/views/components/element/ElementOutline.vue'
 import ProsemirrorEditor from '@/views/components/element/ProsemirrorEditor.vue'
+import emitter, { EmitterEvents } from '@/utils/emitter'
 
 const props = defineProps<{
   elementInfo: PPTTextElement
@@ -94,6 +101,15 @@ const handleSelectElement = (e: MouseEvent | TouchEvent, canMove = true) => {
   e.stopPropagation()
 
   props.selectElement(e, props.elementInfo, canMove)
+}
+
+const handleFocus = () => {
+  if (props.elementInfo.fit && props.elementInfo.fit !== 'resize') {
+    emitter.emit(EmitterEvents.RICH_TEXT_COMMAND, {
+      target: props.elementInfo.id,
+      action: { command: 'focus' },
+    })
+  }
 }
 
 // 监听文本元素的尺寸变化，当高度变化时，更新高度到vuex
@@ -122,12 +138,10 @@ watch(isScaling, () => {
   }
 })
 
-const updateTextElementHeight = (entries: ResizeObserverEntry[]) => {
-  const contentRect = entries[0].contentRect
+const updateTextElementHeight = () => {
   if (!elementRef.value) return
-
-  const realHeight = contentRect.height + 20
-  const realWidth = contentRect.width + 20
+  const realHeight = elementRef.value.offsetHeight
+  const realWidth = elementRef.value.offsetWidth
 
   if (!props.elementInfo.vertical && props.elementInfo.height !== realHeight) {
     if (!isScaling.value) {
@@ -148,7 +162,7 @@ const updateTextElementHeight = (entries: ResizeObserverEntry[]) => {
     else realWidthCache.value = realWidth
   }
 }
-const resizeObserver = new ResizeObserver(updateTextElementHeight)
+const resizeObserver = new ResizeObserver(() => updateTextElementHeight())
 
 onMounted(() => {
   if (elementRef.value) resizeObserver.observe(elementRef.value)
@@ -175,6 +189,15 @@ const isHandleElement = computed(() => handleElementId.value === props.elementIn
 watch(isHandleElement, () => {
   if (!isHandleElement.value) checkEmptyText()
 })
+
+watch(
+  () => {
+    return props.elementInfo.fit
+  },
+  () => {
+    updateTextElementHeight()
+  },
+)
 </script>
 
 <style lang="scss" scoped>
@@ -195,6 +218,36 @@ watch(isHandleElement, () => {
   line-height: 1.5;
   word-break: break-word;
   cursor: move;
+  
+  &.fit-none {
+    display: flex;
+    position: absolute;
+    inset: 0 0 0 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    &.horizontal {
+      ::v-deep {
+        .prosemirror-editor {
+          width: 100%;
+        }
+      }
+    }
+    &.vertical {
+      ::v-deep {
+        .prosemirror-editor {
+          height: 100%;
+        }
+      }
+    }
+  }
+  &.middle {
+    align-items: center;
+  }
+  &.bottom {
+    align-items: end;
+  }
 
   .text {
     position: relative;

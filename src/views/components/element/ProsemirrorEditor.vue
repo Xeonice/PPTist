@@ -262,6 +262,10 @@ const execCommand = ({ target, action }: RichTextCommand) => {
     else if (item.command === 'replace' && item.value) {
       replaceText(editorView, item.value)
     }
+    else if (item.command === 'focus') {
+      editorView.focus()
+      return
+    }
   }
 
   editorView.focus()
