@@ -774,24 +774,22 @@ export default () => {
 
     try {
       const formData = new FormData()
-      formData.append('file', file)
-      formData.append('sourceHeight', '')
-      formData.append('cdnUrl', '')
-      formData.append('enableScaling', 'true')
+      formData.append("file", file);
+      formData.append("cdnUrl", "");
       formData.append('enableSizeCheck', 'true')
       formData.append('backgroundFormat', 'legacy')
-      formData.append('useCdn', 'false')
-      formData.append('width', '1000')
-      formData.append('maxSlides', '100')
-      formData.append('height', '562.5')
+      formData.append("useCdn", "false");
+      formData.append("maxSlides", "100");
       formData.append('enableSlideCountCheck', 'true')
       formData.append('maxSizeM', '50')
-      formData.append('debugOptions', JSON.stringify({ verbose: true, logDetails: true }))
-      formData.append('sourceWidth', '')
+      formData.append(
+        "debugOptions",
+        JSON.stringify({ verbose: true, logDetails: true })
+      );
       formData.append('extractShapeText', 'true')
       formData.append('enableDebugMode', 'false')
       formData.append('cdnFilename', '')
-      formData.append('enableImageCdn', 'false')
+      formData.append("enableImageCdn", "true");
       formData.append('format', 'legacy')
       formData.append('cdnProvider', 'vercel-blob')
 
@@ -807,29 +805,55 @@ export default () => {
         throw new Error(`API请求失败: ${response.status}`)
       }
 
-      const data = await response.json()
+      const responseData = await response.json()
       
-      // 处理返回的数据，导入到PPTist
-      if (data && data.slides) {
-        if (cover) {
-          slidesStore.updateSlideIndex(0)
-          slidesStore.setSlides(data.slides)
-          addHistorySnapshot()
-        }
-        else if (isEmptySlide.value) {
-          slidesStore.setSlides(data.slides)
-          addHistorySnapshot()
-        }
-        else addSlidesFromData(data.slides)
-        
-        message.success('PPTX文件导入成功')
+      // 处理返回的数据结构
+      // API 返回格式: { code, success, data: { result: { slides, theme, ... } } }
+      if (responseData.code !== 0 || !responseData.success) {
+        throw new Error(responseData.message || 'API返回错误')
       }
-      else {
+      
+      const result = responseData.data?.result
+      if (!result || !result.slides || !Array.isArray(result.slides)) {
         throw new Error('返回数据格式错误')
       }
+      
+      // 如果有主题配置，应用主题
+      if (result.theme?.themeColors) {
+        slidesStore.setTheme({ 
+          themeColors: result.theme.themeColors,
+          fontName: result.theme.fontName || theme.value.fontName,
+          fontColor: theme.value.fontColor
+        })
+      }
+      
+      // 导入幻灯片数据
+      const slidesData = result.slides
+      
+      if (cover) {
+        slidesStore.updateSlideIndex(0)
+        slidesStore.setSlides(slidesData)
+        addHistorySnapshot()
+      }
+      else if (isEmptySlide.value) {
+        slidesStore.setSlides(slidesData)
+        addHistorySnapshot()
+      }
+      else addSlidesFromData(slidesData)
+      
+      // 如果有标题，更新标题
+      if (result.title) {
+        slidesStore.setTitle(result.title)
+      }
+      
+      message.success('PPTX文件导入成功')
     }
     catch (error) {
-      message.error('导入PPTX文件失败，请稍后重试')
+      if (error instanceof Error) {
+        message.error(`导入失败: ${error.message}`)
+      } else {
+        message.error('导入PPTX文件失败，请稍后重试')
+      }
     }
     finally {
       exporting.value = false
