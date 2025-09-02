@@ -10,6 +10,12 @@
           }">
             <PopoverMenuItem>导入 PPTX 文件（测试）</PopoverMenuItem>
           </FileInput>
+          <FileInput accept="application/vnd.openxmlformats-officedocument.presentationml.presentation"  @change="files => {
+            importPPTXFileViaAPI(files)
+            mainMenuVisible = false
+          }">
+            <PopoverMenuItem>导入 PPTX 文件（API）</PopoverMenuItem>
+          </FileInput>
           <FileInput accept=".json"  @change="files => {
             importJSON(files)
             mainMenuVisible = false
@@ -107,7 +113,7 @@ const mainStore = useMainStore()
 const slidesStore = useSlidesStore()
 const { title } = storeToRefs(slidesStore)
 const { enterScreening, enterScreeningFromStart } = useScreening()
-const { importSpecificFile, importPPTXFile, importJSON, exporting } = useImport()
+const { importSpecificFile, importPPTXFile, importJSON, importPPTXFileViaAPI, exporting } = useImport()
 const { resetSlides } = useSlideHandler()
 
 const mainMenuVisible = ref(false)

@@ -765,10 +765,82 @@ export default () => {
     reader.readAsArrayBuffer(file)
   }
 
+  // 通过API导入PPTX文件
+  const importPPTXFileViaAPI = async (files: FileList, cover = false) => {
+    const file = files[0]
+    if (!file) return
+
+    exporting.value = true
+
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('sourceHeight', '')
+      formData.append('cdnUrl', '')
+      formData.append('enableScaling', 'true')
+      formData.append('enableSizeCheck', 'true')
+      formData.append('backgroundFormat', 'legacy')
+      formData.append('useCdn', 'false')
+      formData.append('width', '1000')
+      formData.append('maxSlides', '100')
+      formData.append('height', '562.5')
+      formData.append('enableSlideCountCheck', 'true')
+      formData.append('maxSizeM', '50')
+      formData.append('debugOptions', JSON.stringify({ verbose: true, logDetails: true }))
+      formData.append('sourceWidth', '')
+      formData.append('extractShapeText', 'true')
+      formData.append('enableDebugMode', 'false')
+      formData.append('cdnFilename', '')
+      formData.append('enableImageCdn', 'false')
+      formData.append('format', 'legacy')
+      formData.append('cdnProvider', 'vercel-blob')
+
+      const response = await fetch('https://pptx2pptistjson-production.up.railway.app/api/parse-pptx/convert', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'accept': 'application/json',
+        },
+      })
+
+      if (!response.ok) {
+        throw new Error(`API请求失败: ${response.status}`)
+      }
+
+      const data = await response.json()
+      
+      // 处理返回的数据，导入到PPTist
+      if (data && data.slides) {
+        if (cover) {
+          slidesStore.updateSlideIndex(0)
+          slidesStore.setSlides(data.slides)
+          addHistorySnapshot()
+        }
+        else if (isEmptySlide.value) {
+          slidesStore.setSlides(data.slides)
+          addHistorySnapshot()
+        }
+        else addSlidesFromData(data.slides)
+        
+        message.success('PPTX文件导入成功')
+      }
+      else {
+        throw new Error('返回数据格式错误')
+      }
+    }
+    catch (error) {
+      message.error('导入PPTX文件失败，请稍后重试')
+    }
+    finally {
+      exporting.value = false
+    }
+  }
+
   return {
     importSpecificFile,
     importJSON,
     importPPTXFile,
+    importPPTXFileViaAPI,
     exporting,
   }
 }
