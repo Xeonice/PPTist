@@ -818,6 +818,14 @@ export default () => {
         throw new Error('返回数据格式错误')
       }
       
+      // 设置宽高比例（参照 importPPTXFile）
+      if (result?.width) {
+        const width = result.width;
+
+        // 这里暂时不支持 fixedViewport 选项，可根据需要添加
+        slidesStore.setViewportSize(width);
+      }
+      
       // 如果有主题配置，应用主题
       if (result.theme?.themeColors) {
         slidesStore.setTheme({ 
