@@ -774,23 +774,22 @@ export default () => {
 
     try {
       const formData = new FormData()
-      formData.append("file", file);
-      formData.append("cdnUrl", "");
+      formData.append('file', file)
+      formData.append('cdnUrl', '')
       formData.append('enableSizeCheck', 'true')
-      formData.append('backgroundFormat', 'legacy')
-      formData.append("useCdn", "false");
-      formData.append("maxSlides", "100");
+      formData.append('useCdn', 'false')
+      formData.append('maxSlides', '100')
       formData.append('enableSlideCountCheck', 'true')
       formData.append('maxSizeM', '50')
       formData.append(
-        "debugOptions",
+        'debugOptions',
         JSON.stringify({ verbose: true, logDetails: true })
-      );
+      )
       formData.append('extractShapeText', 'true')
       formData.append('enableDebugMode', 'false')
       formData.append('cdnFilename', '')
-      formData.append("enableImageCdn", "true");
-      formData.append('format', 'legacy')
+      formData.append('enableImageCdn', 'true')
+      formData.append('backgroundFormat', 'pptist')
       formData.append('cdnProvider', 'vercel-blob')
 
       const response = await fetch('https://pptx2pptistjson-production.up.railway.app/api/parse-pptx/convert', {
@@ -820,10 +819,10 @@ export default () => {
       
       // 设置宽高比例（参照 importPPTXFile）
       if (result?.width) {
-        const width = result.width;
+        const width = result.width
 
         // 这里暂时不支持 fixedViewport 选项，可根据需要添加
-        slidesStore.setViewportSize(width);
+        slidesStore.setViewportSize(width)
       }
       
       // 如果有主题配置，应用主题
@@ -859,7 +858,8 @@ export default () => {
     catch (error) {
       if (error instanceof Error) {
         message.error(`导入失败: ${error.message}`)
-      } else {
+      }
+      else {
         message.error('导入PPTX文件失败，请稍后重试')
       }
     }
