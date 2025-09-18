@@ -792,7 +792,7 @@ export default () => {
       formData.append('backgroundFormat', 'pptist')
       formData.append('cdnProvider', 'vercel-blob')
 
-      const response = await fetch('https://pptx2pptistjson-production.up.railway.app/api/parse-pptx/convert', {
+      const response = await fetch('https://douglastang.zeabur.app/api/parse-pptx/convert', {
         method: 'POST',
         body: formData,
         headers: {
