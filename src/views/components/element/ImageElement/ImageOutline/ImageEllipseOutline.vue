@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import { toRef } from 'vue'
-import type { PPTElementOutline } from '@/types/slides'
+import type { PPTElementOutline } from '@douglasdong/ppteditor-types'
 import useElementOutline from '@/views/components/element/hooks/useElementOutline'
 
 const props = defineProps<{

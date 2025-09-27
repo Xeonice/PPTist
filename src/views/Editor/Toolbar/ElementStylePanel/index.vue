@@ -8,7 +8,7 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/store'
-import { ElementTypes } from '@/types/slides'
+import { ElementTypes } from '@douglasdong/ppteditor-types'
 
 import TextStylePanel from './TextStylePanel.vue'
 import ImageStylePanel from './ImageStylePanel.vue'

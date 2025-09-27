@@ -1,5 +1,5 @@
 import { ref, watch, type Ref } from 'vue'
-import type { TableTheme } from '@/types/slides'
+import type { TableTheme } from '@douglasdong/ppteditor-types'
 import { getTableSubThemeColor } from '@/utils/element'
 
 // 通过表格的主题色计算辅助颜色

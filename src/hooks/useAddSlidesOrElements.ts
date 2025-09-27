@@ -1,7 +1,7 @@
 import { storeToRefs } from 'pinia'
 import { nanoid } from 'nanoid'
 import { useSlidesStore, useMainStore } from '@/store'
-import type { PPTElement, Slide } from '@/types/slides'
+import type { PPTElement, Slide } from '@douglasdong/ppteditor-types'
 import { createSlideIdMap, createElementIdMap, getElementRange } from '@/utils/element'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 

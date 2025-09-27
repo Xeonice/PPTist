@@ -60,7 +60,7 @@
 import { ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTElementShadow } from '@/types/slides'
+import type { PPTElementShadow } from '@douglasdong/ppteditor-types'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import ColorButton from '@/components/ColorButton.vue'

@@ -49,7 +49,7 @@ import {
   type PPTAudioElement,
   type PPTShapeElement,
   type PPTChartElement,
-} from '@/types/slides'
+} from '@douglasdong/ppteditor-types'
 import type { OperateLineHandlers, OperateResizeHandlers } from '@/types/edit'
 
 import ImageElementOperate from './ImageElementOperate.vue'

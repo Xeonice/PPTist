@@ -49,7 +49,7 @@
 import { nextTick, onMounted, onUnmounted, ref, watch, useTemplateRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTTableElement, TableCell } from '@/types/slides'
+import type { PPTTableElement, TableCell } from '@douglasdong/ppteditor-types'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 

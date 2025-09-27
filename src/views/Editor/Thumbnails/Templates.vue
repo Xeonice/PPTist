@@ -42,7 +42,7 @@
 import { ref, onMounted, useTemplateRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
-import type { Slide } from '@/types/slides'
+import type { Slide } from '@douglasdong/ppteditor-types'
 import api from '@/services'
 
 import ThumbnailSlide from '@/views/components/ThumbnailSlide/index.vue'

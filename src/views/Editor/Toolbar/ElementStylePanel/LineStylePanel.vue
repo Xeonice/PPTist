@@ -76,7 +76,7 @@
 import { type Ref, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { LinePoint, LineStyleType, PPTLineElement } from '@/types/slides'
+import type { LinePoint, LineStyleType, PPTLineElement } from '@douglasdong/ppteditor-types'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import ElementShadow from '../common/ElementShadow.vue'

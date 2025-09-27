@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import { onMounted, useTemplateRef, computed, watch } from 'vue'
 import tinycolor from 'tinycolor2'
-import type { ChartData, ChartOptions, ChartType } from '@/types/slides'
+import type { ChartData, ChartOptions, ChartType } from '@douglasdong/ppteditor-types'
 import { getChartOption } from './chartOption'
 
 import * as echarts from 'echarts/core'

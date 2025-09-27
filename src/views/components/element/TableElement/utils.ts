@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'vue'
-import type { TableCellStyle } from '@/types/slides'
+import type { TableCellStyle } from '@douglasdong/ppteditor-types'
 
 /**
  * 计算单元格文本样式

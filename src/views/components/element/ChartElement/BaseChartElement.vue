@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { PPTChartElement } from '@/types/slides'
+import type { PPTChartElement } from '@douglasdong/ppteditor-types'
 
 import ElementOutline from '@/views/components/element/ElementOutline.vue'
 import Chart from './Chart.vue'

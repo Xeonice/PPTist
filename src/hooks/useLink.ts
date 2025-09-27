@@ -1,5 +1,5 @@
 import { useSlidesStore } from '@/store'
-import type { PPTElement, PPTElementLink } from '@/types/slides'
+import type { PPTElement, PPTElementLink } from '@douglasdong/ppteditor-types'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 import message from '@/utils/message'
 

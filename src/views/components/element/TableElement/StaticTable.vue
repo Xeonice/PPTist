@@ -42,7 +42,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
-import type { PPTElementOutline, TableCell, TableTheme } from '@/types/slides'
+import type { PPTElementOutline, TableCell, TableTheme } from '@douglasdong/ppteditor-types'
 import { getTextStyle, formatText } from './utils'
 import useHideCells from './useHideCells'
 import useSubThemeColor from './useSubThemeColor'

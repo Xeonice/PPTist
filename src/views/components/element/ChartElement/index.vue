@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { PPTChartElement } from '@/types/slides'
+import type { PPTChartElement } from '@douglasdong/ppteditor-types'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import emitter, { EmitterEvents } from '@/utils/emitter'
 

@@ -70,7 +70,7 @@ import { computed, onMounted, onUnmounted, ref, watch, useTemplateRef } from 'vu
 import { storeToRefs } from 'pinia'
 import { debounce } from 'lodash'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTTextElement } from '@/types/slides'
+import type { PPTTextElement } from '@douglasdong/ppteditor-types'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import useElementShadow from '@/views/components/element/hooks/useElementShadow'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'

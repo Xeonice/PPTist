@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { omit } from 'lodash'
-import type { Slide, SlideTheme, PPTElement, PPTAnimation, SlideTemplate } from '@/types/slides'
+import type { Slide, SlideTheme, PPTElement, PPTAnimation, SlideTemplate } from '@douglasdong/ppteditor-types'
 
 interface RemovePropData {
   id: string

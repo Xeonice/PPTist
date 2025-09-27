@@ -1,6 +1,6 @@
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTElement } from '@/types/slides'
+import type { PPTElement } from '@douglasdong/ppteditor-types'
 import { ElementAlignCommands } from '@/types/edit'
 import { getElementListRange, getRectRotatedOffset } from '@/utils/element'
 import useHistorySnapshot from './useHistorySnapshot'

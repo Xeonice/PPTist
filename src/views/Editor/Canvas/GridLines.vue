@@ -18,7 +18,7 @@ import { computed } from 'vue'
 import tinycolor from 'tinycolor2'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { SlideBackground } from '@/types/slides'
+import type { SlideBackground } from '@douglasdong/ppteditor-types'
 
 const { canvasScale, gridLineSize } = storeToRefs(useMainStore())
 const { currentSlide, viewportRatio, viewportSize } = storeToRefs(useSlidesStore())

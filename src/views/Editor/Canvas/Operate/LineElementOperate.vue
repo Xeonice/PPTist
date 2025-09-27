@@ -43,7 +43,7 @@ export default {
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/store'
-import type { PPTLineElement } from '@/types/slides'
+import type { PPTLineElement } from '@douglasdong/ppteditor-types'
 import { OperateLineHandlers } from '@/types/edit'
 
 import ResizeHandler from './ResizeHandler.vue'

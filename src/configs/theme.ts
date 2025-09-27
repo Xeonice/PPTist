@@ -1,4 +1,4 @@
-import type { PPTElementOutline, PPTElementShadow } from '@/types/slides'
+import type { PPTElementOutline, PPTElementShadow } from '@douglasdong/ppteditor-types'
 
 export interface PresetTheme {
   background: string

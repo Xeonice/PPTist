@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { PPTLatexElement } from '@/types/slides'
+import type { PPTLatexElement } from '@douglasdong/ppteditor-types'
 
 defineProps<{
   elementInfo: PPTLatexElement

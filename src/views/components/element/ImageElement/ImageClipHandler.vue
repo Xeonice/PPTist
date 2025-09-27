@@ -71,7 +71,7 @@ import { storeToRefs } from 'pinia'
 import { useMainStore, useKeyboardStore } from '@/store'
 import { KEYS } from '@/configs/hotkey'
 import { type ImageClipedEmitData, OperateResizeHandlers } from '@/types/edit'
-import type { ImageClipDataRange, ImageElementClip } from '@/types/slides'
+import type { ImageClipDataRange, ImageElementClip } from '@douglasdong/ppteditor-types'
 
 const props = defineProps<{
   src: string

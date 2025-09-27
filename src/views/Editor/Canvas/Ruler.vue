@@ -58,7 +58,7 @@ import { watchEffect, computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import { getElementListRange } from '@/utils/element'
-import type { PPTElement } from '@/types/slides'
+import type { PPTElement } from '@douglasdong/ppteditor-types'
 
 interface ViewportStyles {
   top: number

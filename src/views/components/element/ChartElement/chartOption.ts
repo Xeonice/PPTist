@@ -6,7 +6,7 @@ import type {
   ScatterSeriesOption,
   RadarSeriesOption,
 } from 'echarts/charts'
-import type { ChartData, ChartType } from '@/types/slides'
+import type { ChartData, ChartType } from '@douglasdong/ppteditor-types'
 
 type EChartOption = ComposeOption<BarSeriesOption | LineSeriesOption | PieSeriesOption | ScatterSeriesOption | RadarSeriesOption>
 

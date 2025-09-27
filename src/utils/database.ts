@@ -1,6 +1,6 @@
 import Dexie, { type EntityTable } from 'dexie'
 import { databaseId } from '@/store/main'
-import type { Slide } from '@/types/slides'
+import type { Slide } from '@douglasdong/ppteditor-types'
 import { LOCALSTORAGE_KEY_DISCARDED_DB } from '@/configs/storage'
 
 export interface writingBoardImg {

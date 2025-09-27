@@ -84,7 +84,7 @@ import useSectionHandler from '@/hooks/useSectionHandler'
 import useScreening from '@/hooks/useScreening'
 import useLoadSlides from '@/hooks/useLoadSlides'
 import useAddSlidesOrElements from '@/hooks/useAddSlidesOrElements'
-import type { Slide } from '@/types/slides'
+import type { Slide } from '@douglasdong/ppteditor-types'
 
 import ThumbnailSlide from '@/views/components/ThumbnailSlide/index.vue'
 import Templates from './Templates.vue'

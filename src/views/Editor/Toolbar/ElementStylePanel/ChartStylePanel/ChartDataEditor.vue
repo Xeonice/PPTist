@@ -92,7 +92,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import type { ChartData, ChartType } from '@/types/slides'
+import type { ChartData, ChartType } from '@douglasdong/ppteditor-types'
 import { KEYS } from '@/configs/hotkey'
 import { CHART_TYPE_MAP } from '@/configs/chart'
 import { pasteCustomClipboardString, pasteExcelClipboardString, pasteHTMLTableClipboardString } from '@/utils/clipboard'

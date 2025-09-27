@@ -68,7 +68,7 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { ImageElementClip, PPTImageElement } from '@/types/slides'
+import type { ImageElementClip, PPTImageElement } from '@douglasdong/ppteditor-types'
 import type { ImageClipedEmitData } from '@/types/edit'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import useElementShadow from '@/views/components/element/hooks/useElementShadow'

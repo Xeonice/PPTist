@@ -1,6 +1,6 @@
 import type { Ref, ShallowRef } from 'vue'
 import { useSlidesStore } from '@/store'
-import type { PPTElement, PPTLineElement, PPTVideoElement, PPTAudioElement, PPTChartElement } from '@/types/slides'
+import type { PPTElement, PPTLineElement, PPTVideoElement, PPTAudioElement, PPTChartElement } from '@douglasdong/ppteditor-types'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 /**

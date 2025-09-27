@@ -1,7 +1,7 @@
 import tinycolor from 'tinycolor2'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
-import type { Slide } from '@/types/slides'
+import type { Slide } from '@douglasdong/ppteditor-types'
 import type { PresetTheme } from '@/configs/theme'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 import { getLineElementLength } from '@/utils/element'

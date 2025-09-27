@@ -1,4 +1,4 @@
-import type { TurningMode } from '@/types/slides'
+import type { TurningMode } from '@douglasdong/ppteditor-types'
 
 export const ANIMATION_DEFAULT_DURATION = 1000
 export const ANIMATION_DEFAULT_TRIGGER = 'click'

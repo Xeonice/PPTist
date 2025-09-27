@@ -51,7 +51,7 @@
 import { ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { LineStyleType, PPTElementOutline } from '@/types/slides'
+import type { LineStyleType, PPTElementOutline } from '@douglasdong/ppteditor-types'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import SVGLine from '../common/SVGLine.vue'

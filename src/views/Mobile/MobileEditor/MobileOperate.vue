@@ -37,7 +37,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { PPTElement, PPTLineElement, PPTChartElement, PPTVideoElement, PPTAudioElement } from '@/types/slides'
+import type { PPTElement, PPTLineElement, PPTChartElement, PPTVideoElement, PPTAudioElement } from '@douglasdong/ppteditor-types'
 import useCommonOperate from '@/views/Editor/Canvas/hooks/useCommonOperate'
 import type { OperateResizeHandlers } from '@/types/edit'
 

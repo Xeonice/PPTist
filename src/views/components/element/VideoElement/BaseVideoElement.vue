@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { PPTVideoElement } from '@/types/slides'
+import type { PPTVideoElement } from '@douglasdong/ppteditor-types'
 
 defineProps<{
   elementInfo: PPTVideoElement

@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ElementTypes, type PPTElement } from '@/types/slides'
+import { ElementTypes, type PPTElement } from '@douglasdong/ppteditor-types'
 
 import ImageElement from '@/views/components/element/ImageElement/index.vue'
 import TextElement from '@/views/components/element/TextElement/index.vue'

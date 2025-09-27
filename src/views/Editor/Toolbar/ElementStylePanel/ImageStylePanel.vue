@@ -72,7 +72,7 @@
 import { type Ref, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTImageElement, SlideBackground } from '@/types/slides'
+import type { PPTImageElement, SlideBackground } from '@douglasdong/ppteditor-types'
 import { CLIPPATHS } from '@/configs/imageClip'
 import { getImageDataURL, getImageSize } from '@/utils/image'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'

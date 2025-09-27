@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { GradientColor, GradientType } from '@/types/slides'
+import type { GradientColor, GradientType } from '@douglasdong/ppteditor-types'
 
 withDefaults(defineProps<{
   id: string

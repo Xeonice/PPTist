@@ -36,7 +36,7 @@ export default {
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/store'
-import type { PPTTableElement } from '@/types/slides'
+import type { PPTTableElement } from '@douglasdong/ppteditor-types'
 import type { OperateResizeHandlers } from '@/types/edit'
 import useCommonOperate from '../hooks/useCommonOperate'
 

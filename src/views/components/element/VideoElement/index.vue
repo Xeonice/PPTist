@@ -40,7 +40,7 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/store'
-import type { PPTVideoElement } from '@/types/slides'
+import type { PPTVideoElement } from '@douglasdong/ppteditor-types'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 
 import VideoPlayer from './VideoPlayer/index.vue'

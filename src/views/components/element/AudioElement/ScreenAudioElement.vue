@@ -39,7 +39,7 @@
 import { computed, inject, ref, useTemplateRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
-import type { PPTAudioElement } from '@/types/slides'
+import type { PPTAudioElement } from '@douglasdong/ppteditor-types'
 import { injectKeySlideId, injectKeySlideScale } from '@/types/injectKey'
 
 import AudioPlayer from './AudioPlayer.vue'

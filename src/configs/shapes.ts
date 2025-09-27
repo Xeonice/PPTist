@@ -2,7 +2,7 @@
 
 // 非专业设计人士可以用该应用绘制基本形状：https://github.com/pipipi-pikachu/svgPathCreator
 
-import { ShapePathFormulasKeys } from '@/types/slides'
+import { ShapePathFormulasKeys } from '@douglasdong/ppteditor-types'
 
 export interface ShapePoolItem {
   viewBox: [number, number]

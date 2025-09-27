@@ -314,7 +314,7 @@ import type {
   SlideBackgroundImage,
   SlideBackgroundImageSize,
   LineStyleType,
-} from '@/types/slides'
+} from '@douglasdong/ppteditor-types'
 import { PRESET_THEMES } from '@/configs/theme'
 import { FONTS } from '@/configs/font'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'

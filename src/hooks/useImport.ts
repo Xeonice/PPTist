@@ -23,7 +23,7 @@ import type {
   PPTTextElement,
   ChartOptions,
   Gradient,
-} from '@/types/slides'
+} from '@douglasdong/ppteditor-types'
 
 const convertFontSizePtToPx = (html: string, ratio: number) => {
   return html.replace(/font-size:\s*([\d.]+)pt/g, (match, p1) => {

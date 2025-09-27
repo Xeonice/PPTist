@@ -30,7 +30,7 @@
 import { computed, inject, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
-import type { PPTVideoElement } from '@/types/slides'
+import type { PPTVideoElement } from '@douglasdong/ppteditor-types'
 import { injectKeySlideId, injectKeySlideScale } from '@/types/injectKey'
 
 import VideoPlayer from './VideoPlayer/index.vue'

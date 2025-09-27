@@ -90,7 +90,7 @@
 import { computed, nextTick, ref, watch, useTemplateRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTShapeElement, ShapeText } from '@/types/slides'
+import type { PPTShapeElement, ShapeText } from '@douglasdong/ppteditor-types'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import useElementOutline from '@/views/components/element/hooks/useElementOutline'
 import useElementShadow from '@/views/components/element/hooks/useElementShadow'

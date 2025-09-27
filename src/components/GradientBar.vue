@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, watchEffect, useTemplateRef } from 'vue'
-import type { GradientColor } from '@/types/slides'
+import type { GradientColor } from '@douglasdong/ppteditor-types'
 
 const props = defineProps<{
   value: GradientColor[]

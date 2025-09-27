@@ -14,7 +14,7 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTElement, PPTElementLink } from '@/types/slides'
+import type { PPTElement, PPTElementLink } from '@douglasdong/ppteditor-types'
 import useLink from '@/hooks/useLink'
 import Divider from '@/components/Divider.vue'
 

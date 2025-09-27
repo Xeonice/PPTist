@@ -36,7 +36,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
 import { nanoid } from 'nanoid'
-import type { LinePoint, LineStyleType } from '@/types/slides'
+import type { LinePoint, LineStyleType } from '@douglasdong/ppteditor-types'
 import LinePointMarker from '@/views/components/element/LineElement/LinePointMarker.vue'
 
 const props = withDefaults(defineProps<{

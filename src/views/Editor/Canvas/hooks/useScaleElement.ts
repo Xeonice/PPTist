@@ -1,7 +1,7 @@
 import type { Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore, useKeyboardStore } from '@/store'
-import type { PPTElement, PPTImageElement, PPTLineElement, PPTShapeElement } from '@/types/slides'
+import type { PPTElement, PPTImageElement, PPTLineElement, PPTShapeElement } from '@douglasdong/ppteditor-types'
 import { OperateResizeHandlers, type AlignmentLineProps, type MultiSelectRange } from '@/types/edit'
 import { MIN_SIZE } from '@/configs/element'
 import { SHAPE_PATH_FORMULAS } from '@/configs/shapes'

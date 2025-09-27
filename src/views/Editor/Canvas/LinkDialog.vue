@@ -38,7 +38,7 @@
 import { computed, onMounted, ref, useTemplateRef, nextTick } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { ElementLinkType, PPTElementLink } from '@/types/slides'
+import type { ElementLinkType, PPTElementLink } from '@douglasdong/ppteditor-types'
 import useLink from '@/hooks/useLink'
 
 import ThumbnailSlide from '@/views/components/ThumbnailSlide/index.vue'

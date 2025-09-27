@@ -142,7 +142,7 @@
 import { type Ref, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { GradientType, PPTShapeElement, Gradient, ShapeText } from '@/types/slides'
+import type { GradientType, PPTShapeElement, Gradient, ShapeText } from '@douglasdong/ppteditor-types'
 import { type ShapePoolItem, SHAPE_LIST, SHAPE_PATH_FORMULAS } from '@/configs/shapes'
 import { getImageDataURL } from '@/utils/image'
 import emitter, { EmitterEvents } from '@/utils/emitter'

@@ -11,7 +11,7 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { SlideBackground } from '@/types/slides'
+import type { SlideBackground } from '@douglasdong/ppteditor-types'
 import GridLines from './GridLines.vue'
 import useSlideBackgroundStyle from '@/hooks/useSlideBackgroundStyle'
 

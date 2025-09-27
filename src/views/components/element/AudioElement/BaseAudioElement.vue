@@ -26,7 +26,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { PPTAudioElement } from '@/types/slides'
+import type { PPTAudioElement } from '@douglasdong/ppteditor-types'
 
 const props = defineProps<{
   elementInfo: PPTAudioElement

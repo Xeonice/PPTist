@@ -1,4 +1,4 @@
-import type { LinePoint, LineStyleType } from '@/types/slides'
+import type { LinePoint, LineStyleType } from '@douglasdong/ppteditor-types'
 
 
 export interface LinePoolItem {

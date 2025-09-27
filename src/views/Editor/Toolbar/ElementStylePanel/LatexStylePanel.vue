@@ -46,7 +46,7 @@
 import { onUnmounted, ref, type Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTLatexElement } from '@/types/slides'
+import type { PPTLatexElement } from '@douglasdong/ppteditor-types'
 import emitter, { EmitterEvents } from '@/utils/emitter'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 

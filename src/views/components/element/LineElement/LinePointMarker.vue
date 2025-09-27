@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { LinePoint } from '@/types/slides'
+import type { LinePoint } from '@douglasdong/ppteditor-types'
 
 type NonEmptyLinePoint = Exclude<LinePoint, ''>
 

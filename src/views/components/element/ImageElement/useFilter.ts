@@ -1,5 +1,5 @@
 import { computed, type Ref } from 'vue'
-import type { ImageElementFilters, ImageElementFilterKeys } from '@/types/slides'
+import type { ImageElementFilters, ImageElementFilterKeys } from '@douglasdong/ppteditor-types'
 
 export default (filters: Ref<ImageElementFilters | undefined>) => {
   const filter = computed(() => {

@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ChartType } from '@/types/slides'
+import type { ChartType } from '@douglasdong/ppteditor-types'
 import { CHART_TYPE_MAP } from '@/configs/chart'
 
 const emit = defineEmits<{

@@ -37,7 +37,7 @@
 import { ref, watch, type Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { ImageElementFilterKeys, ImageElementFilters, PPTImageElement } from '@/types/slides'
+import type { ImageElementFilterKeys, ImageElementFilters, PPTImageElement } from '@douglasdong/ppteditor-types'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import Switch from '@/components/Switch.vue'

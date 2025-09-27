@@ -39,7 +39,7 @@
 import type { Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTAudioElement } from '@/types/slides'
+import type { PPTAudioElement } from '@douglasdong/ppteditor-types'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import ColorButton from '@/components/ColorButton.vue'

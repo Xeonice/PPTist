@@ -91,7 +91,7 @@
 import { ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTTextElement } from '@/types/slides'
+import type { PPTTextElement } from '@douglasdong/ppteditor-types'
 import emitter, { EmitterEvents, type RichTextAction } from '@/utils/emitter'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 

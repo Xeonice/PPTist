@@ -1,6 +1,6 @@
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/store'
-import type { PPTShapeElement } from '@/types/slides'
+import type { PPTShapeElement } from '@douglasdong/ppteditor-types'
 
 export default () => {
   const mainStore = useMainStore()

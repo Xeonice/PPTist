@@ -30,7 +30,7 @@
 import { computed, provide } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
-import type { Slide } from '@/types/slides'
+import type { Slide } from '@douglasdong/ppteditor-types'
 import { injectKeySlideScale } from '@/types/injectKey'
 import useSlideBackgroundStyle from '@/hooks/useSlideBackgroundStyle'
 

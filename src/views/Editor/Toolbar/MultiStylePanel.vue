@@ -134,7 +134,7 @@
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { LineStyleType, PPTElement, PPTElementOutline, TableCell } from '@/types/slides'
+import type { LineStyleType, PPTElement, PPTElementOutline, TableCell } from '@douglasdong/ppteditor-types'
 import emitter, { EmitterEvents } from '@/utils/emitter'
 import { FONTS } from '@/configs/font'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'

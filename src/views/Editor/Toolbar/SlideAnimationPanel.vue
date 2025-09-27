@@ -20,7 +20,7 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
-import type { TurningMode } from '@/types/slides'
+import type { TurningMode } from '@douglasdong/ppteditor-types'
 import { SLIDE_ANIMATIONS } from '@/configs/animation'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 import message from '@/utils/message'

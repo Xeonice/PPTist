@@ -43,7 +43,7 @@ export default {
 import { computed, type CSSProperties } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/store'
-import type { PPTShapeElement } from '@/types/slides'
+import type { PPTShapeElement } from '@douglasdong/ppteditor-types'
 import type { OperateResizeHandlers } from '@/types/edit'
 import { SHAPE_PATH_FORMULAS } from '@/configs/shapes'
 import useCommonOperate from '../hooks/useCommonOperate'

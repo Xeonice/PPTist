@@ -71,7 +71,7 @@ import { FONTS } from '@/configs/font'
 import useSlideTheme from '@/hooks/useSlideTheme'
 import Tabs from '@/components/Tabs.vue'
 import Button from '@/components/Button.vue'
-import type { SlideTheme } from '@/types/slides'
+import type { SlideTheme } from '@douglasdong/ppteditor-types'
 import message from '@/utils/message'
 
 const emit = defineEmits<{

@@ -122,7 +122,7 @@ import { computed, ref, watch } from 'vue'
 import { nanoid } from 'nanoid'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { AnimationTrigger, AnimationType, PPTAnimation } from '@/types/slides'
+import type { AnimationTrigger, AnimationType, PPTAnimation } from '@douglasdong/ppteditor-types'
 import { 
   ENTER_ANIMATIONS,
   EXIT_ANIMATIONS,

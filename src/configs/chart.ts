@@ -1,4 +1,4 @@
-import type { ChartData } from '@/types/slides'
+import type { ChartData } from '@douglasdong/ppteditor-types'
 
 export const CHART_TYPE_MAP: { [key: string]: string } = {
   'bar': '柱状图',

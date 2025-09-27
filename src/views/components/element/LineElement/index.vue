@@ -61,7 +61,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { PPTLineElement } from '@/types/slides'
+import type { PPTLineElement } from '@douglasdong/ppteditor-types'
 import { getLineElementPath } from '@/utils/element'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import useElementShadow from '@/views/components/element/hooks/useElementShadow'

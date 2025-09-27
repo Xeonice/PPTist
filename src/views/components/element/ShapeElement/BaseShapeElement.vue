@@ -68,7 +68,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import type { PPTShapeElement, ShapeText } from '@/types/slides'
+import type { PPTShapeElement, ShapeText } from '@douglasdong/ppteditor-types'
 import { useSlidesStore } from '@/store'
 import useElementOutline from '@/views/components/element/hooks/useElementOutline'
 import useElementShadow from '@/views/components/element/hooks/useElementShadow'

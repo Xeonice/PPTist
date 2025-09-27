@@ -1,4 +1,4 @@
-import type { PPTShapeElement } from '@/types/slides'
+import type { PPTShapeElement } from '@douglasdong/ppteditor-types'
 import { computed, type Ref } from 'vue'
 
 // 计算元素的填充样式

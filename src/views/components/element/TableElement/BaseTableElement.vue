@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { PPTTableElement } from '@/types/slides'
+import type { PPTTableElement } from '@douglasdong/ppteditor-types'
 
 import StaticTable from './StaticTable.vue'
 

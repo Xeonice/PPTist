@@ -1,7 +1,7 @@
 import type { Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useKeyboardStore, useMainStore, useSlidesStore } from '@/store'
-import type { PPTElement, PPTLineElement } from '@/types/slides'
+import type { PPTElement, PPTLineElement } from '@douglasdong/ppteditor-types'
 import { OperateLineHandlers } from '@/types/edit'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 

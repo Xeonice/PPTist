@@ -44,7 +44,7 @@
 import { computed, onMounted, ref, watchEffect, useTemplateRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTElement } from '@/types/slides'
+import type { PPTElement } from '@douglasdong/ppteditor-types'
 import type { AlignmentLineProps } from '@/types/edit'
 import type { Mode } from '@/types/mobile'
 import useSlideBackgroundStyle from '@/hooks/useSlideBackgroundStyle'

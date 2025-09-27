@@ -30,7 +30,7 @@
 import type { Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { PPTVideoElement } from '@/types/slides'
+import type { PPTVideoElement } from '@douglasdong/ppteditor-types'
 import { getImageDataURL } from '@/utils/image'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 

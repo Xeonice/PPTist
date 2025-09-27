@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { PPTLatexElement } from '@/types/slides'
+import type { PPTLatexElement } from '@douglasdong/ppteditor-types'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import emitter, { EmitterEvents } from '@/utils/emitter'
 

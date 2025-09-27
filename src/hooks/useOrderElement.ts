@@ -1,6 +1,6 @@
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
-import type { PPTElement } from '@/types/slides'
+import type { PPTElement } from '@douglasdong/ppteditor-types'
 import { ElementOrderCommands } from '@/types/edit'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 

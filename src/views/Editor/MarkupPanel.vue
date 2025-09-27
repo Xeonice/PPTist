@@ -45,7 +45,7 @@
 import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
-import type { ImageType, SlideType, TextType } from '@/types/slides'
+import type { ImageType, SlideType, TextType } from '@douglasdong/ppteditor-types'
 
 import MoveablePanel from '@/components/MoveablePanel.vue'
 import Select from '@/components/Select.vue'
