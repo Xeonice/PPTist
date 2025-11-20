@@ -1,5 +1,5 @@
 // Font Awesome 图标类名到 Unicode 码点的映射
-// 基于 Font Awesome Free 6.x 版本
+// 基于 Font Awesome Free 7.x 版本
 
 export const FA_ICON_MAP: Record<string, { unicode: string; weight: string }> = {
   // Solid 图标 (weight: 900)
