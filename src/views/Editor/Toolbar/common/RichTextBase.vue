@@ -480,30 +480,18 @@ const removeLink = () => {
 
 // Unicode 符号相关方法
 const selectCustomBullet = (bullet: BulletIcon) => {
-  let command
+  let value
 
   if (bullet.type === 'unicode') {
-    command = {
-      type: 'custom',
-      char: bullet.value,
-      font: bullet.font || ''
-    }
+    value = `unicode:${bullet.value}:${bullet.font || ''}`
   } else if (bullet.type === 'fontawesome') {
-    command = {
-      type: 'fontawesome',
-      class: bullet.value,
-      font: 'Font Awesome'
-    }
+    value = `fontawesome:${bullet.value}`
   } else {
     // 默认处理
-    command = {
-      type: 'custom',
-      char: bullet.value,
-      font: bullet.font || ''
-    }
+    value = `unicode:${bullet.value}:${bullet.font || ''}`
   }
 
-  emitRichTextCommand('bulletList', command)
+  emitRichTextCommand('bulletList', value)
   bulletListPanelVisible.value = false
 }
 

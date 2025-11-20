@@ -213,20 +213,7 @@ const execCommand = ({ target, action }: RichTextCommand) => {
         fontsize: richTextAttrs.value.fontsize
       }
 
-      // 处理自定义项目符号
-      let listStyleTypeValue = item.value
-      if (typeof item.value === 'object' && item.value.type === 'custom') {
-        listStyleTypeValue = {
-          type: 'custom',
-          char: item.value.char,
-          font: item.value.font || ''
-        }
-      } else if (typeof item.value === 'string') {
-        listStyleTypeValue = item.value
-      } else {
-        listStyleTypeValue = ''
-      }
-
+      const listStyleTypeValue = item.value || ''
       toggleList(bulletList, listItem, listStyleTypeValue, textStyle)(editorView.state, editorView.dispatch)
     }
     else if (item.command === 'orderedList') {
