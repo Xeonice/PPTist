@@ -1,6 +1,7 @@
 import { nodes } from 'prosemirror-schema-basic'
 import type { Node, NodeSpec } from 'prosemirror-model'
 import { listItem as _listItem } from 'prosemirror-schema-list'
+import { getFAUnicode } from '@/utils/fontawesome'
 
 interface Attr {
   [key: string]: number | string
@@ -59,6 +60,12 @@ const bulletList: NodeSpec = {
     listStyleType: {
       default: '',
     },
+    customBullet: {
+      default: '',  // 自定义符号字符
+    },
+    bulletFont: {
+      default: '',  // 符号字体（如 'Unicode'）
+    },
     fontsize: {
       default: '',
     },
@@ -79,18 +86,63 @@ const bulletList: NodeSpec = {
         if (fontSize) attr['fontsize'] = fontSize
         if (color) attr['color'] = color
 
+        // 解析自定义符号属性
+        const customBullet = (dom as HTMLElement).getAttribute('data-custom-bullet')
+        const bulletChar = (dom as HTMLElement).getAttribute('data-bullet-char')
+        const bulletFont = (dom as HTMLElement).getAttribute('data-bullet-font')
+        const fontawesomeBullet = (dom as HTMLElement).getAttribute('data-fontawesome-bullet')
+        const faIconClass = (dom as HTMLElement).getAttribute('data-fa-icon-class')
+
+        if (customBullet === 'true' && bulletChar) {
+          attr['customBullet'] = bulletChar
+          if (bulletFont) attr['bulletFont'] = bulletFont
+        } else if (fontawesomeBullet === 'true' && faIconClass) {
+          attr['customBullet'] = faIconClass
+          attr['bulletFont'] = 'fontawesome'
+        }
+
         return attr
       }
     }
   ],
   toDOM: (node: Node) => {
-    const { listStyleType, fontsize, color } = node.attrs
+    const { listStyleType, fontsize, color, customBullet, bulletFont } = node.attrs
     let style = ''
-    if (listStyleType) style += `list-style-type: ${listStyleType};`
-    if (fontsize) style += `font-size: ${fontsize};`
-    if (color) style += `color: ${color};`
+    const attrs: Attr = {}
 
-    return ['ul', { style }, 0]
+    if (customBullet) {
+      style += `list-style-type: none;`
+
+      if (bulletFont === 'fontawesome') {
+        // Font Awesome 图标
+        const faMapping = getFAUnicode(customBullet)
+        attrs['data-fontawesome-bullet'] = 'true'
+        attrs['data-fa-icon-class'] = customBullet
+        style += `--bullet-icon: '${faMapping.unicode}';`
+        style += `--fa-font-weight: ${faMapping.weight};`
+      } else {
+        // Unicode 自定义符号
+        attrs['data-custom-bullet'] = 'true'
+        attrs['data-bullet-char'] = customBullet
+        if (bulletFont) {
+          attrs['data-bullet-font'] = bulletFont
+          style += `--bullet-font: ${bulletFont};`
+        }
+        style += `--bullet-content: '${customBullet}';`
+      }
+    } else if (listStyleType) {
+      style += `list-style-type: ${listStyleType};`
+    }
+
+    if (fontsize) style += `font-size: ${fontsize};`
+    if (color) {
+      style += `color: ${color};`
+      style += `--bullet-color: ${color};`
+    }
+
+    attrs.style = style
+
+    return ['ul', attrs, 0]
   },
 }
 

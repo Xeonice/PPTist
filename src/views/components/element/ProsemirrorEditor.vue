@@ -207,13 +207,27 @@ const execCommand = ({ target, action }: RichTextCommand) => {
       textIndentCommand(editorView, +item.value)
     }
     else if (item.command === 'bulletList') {
-      const listStyleType = item.value || ''
       const { bullet_list: bulletList, list_item: listItem } = editorView.state.schema.nodes
       const textStyle = {
         color: richTextAttrs.value.color,
         fontsize: richTextAttrs.value.fontsize
       }
-      toggleList(bulletList, listItem, listStyleType, textStyle)(editorView.state, editorView.dispatch)
+
+      // 处理自定义项目符号
+      let listStyleTypeValue = item.value
+      if (typeof item.value === 'object' && item.value.type === 'custom') {
+        listStyleTypeValue = {
+          type: 'custom',
+          char: item.value.char,
+          font: item.value.font || ''
+        }
+      } else if (typeof item.value === 'string') {
+        listStyleTypeValue = item.value
+      } else {
+        listStyleTypeValue = ''
+      }
+
+      toggleList(bulletList, listItem, listStyleTypeValue, textStyle)(editorView.state, editorView.dispatch)
     }
     else if (item.command === 'orderedList') {
       const listStyleType = item.value || ''

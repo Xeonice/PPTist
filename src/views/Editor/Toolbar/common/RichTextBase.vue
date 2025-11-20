@@ -188,17 +188,123 @@
           v-tooltip="'项目符号'"
           @click="emitRichTextCommand('bulletList')"
         ><IconList /></Button>
-        <Popover trigger="click" v-model:value="bulletListPanelVisible">
+        <Popover trigger="click" v-model:value="bulletListPanelVisible" placement="bottom-start">
           <template #content>
-            <div class="list-wrap">
-              <ul class="list" 
-                v-for="item in bulletListStyleTypeOption" 
-                :key="item" 
-                :style="{ listStyleType: item }"
-                @click="emitRichTextCommand('bulletList', item)"
-              >
-                <li class="list-item" v-for="key in 3" :key="key"><span></span></li>
-              </ul>
+            <div class="bullet-panel">
+              <!-- Tab 切换 -->
+              <div class="bullet-tabs">
+                <button
+                  v-for="tab in bulletTabs"
+                  :key="tab.key"
+                  :class="['tab-button', { active: activeBulletTab === tab.key }]"
+                  @click="activeBulletTab = tab.key"
+                >
+                  {{ tab.label }}
+                </button>
+              </div>
+
+              <!-- 标准样式选项 -->
+              <div v-if="activeBulletTab === 'standard'" class="bullet-section">
+                <div class="list-wrap">
+                  <ul class="list"
+                    v-for="item in bulletListStyleTypeOption"
+                    :key="item"
+                    :style="{ listStyleType: item }"
+                    @click="emitRichTextCommand('bulletList', item)"
+                  >
+                    <li class="list-item" v-for="key in 3" :key="key"><span></span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 推荐符号 -->
+              <div v-if="activeBulletTab === 'recommended'" class="bullet-section">
+                <div class="char-grid">
+                  <button
+                    v-for="bullet in defaultBullets"
+                    :key="bullet.value"
+                    class="char-button"
+                    :title="bullet.name"
+                    @click="selectCustomBullet(bullet)"
+                  >
+                    <span v-if="bullet.type === 'unicode'" class="unicode-char">{{ bullet.value }}</span>
+                    <i v-else-if="bullet.type === 'fontawesome'" :class="bullet.value"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Unicode 符号分类 -->
+              <div v-if="activeBulletTab === 'unicode'" class="bullet-section">
+                <div
+                  v-for="(chars, category) in unicodeBulletsByCategory"
+                  :key="category"
+                  class="category-group"
+                >
+                  <div class="category-name">{{ category }}</div>
+                  <div class="char-grid">
+                    <button
+                      v-for="char in chars"
+                      :key="char.value"
+                      class="char-button"
+                      :title="char.name"
+                      @click="selectCustomBullet(char)"
+                    >
+                      <span class="unicode-char">{{ char.value }}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Font Awesome 图标 -->
+              <div v-if="activeBulletTab === 'fontawesome'" class="bullet-section">
+                <!-- 搜索框 -->
+                <div class="search-box">
+                  <Input
+                    v-model:value="iconSearchQuery"
+                    placeholder="搜索图标..."
+                    size="small"
+                  />
+                </div>
+
+                <!-- 按分类显示 -->
+                <div v-if="!iconSearchQuery" class="fa-categories">
+                  <div
+                    v-for="(icons, category) in fontAwesomeBulletsByCategory"
+                    :key="category"
+                    class="category-group"
+                  >
+                    <div class="category-name">{{ category }}</div>
+                    <div class="icon-grid">
+                      <button
+                        v-for="icon in icons"
+                        :key="icon.value"
+                        class="char-button fa-button"
+                        :title="icon.name"
+                        @click="selectCustomBullet(icon)"
+                      >
+                        <i :class="icon.value"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 搜索结果 -->
+                <div v-else class="search-results">
+                  <div class="search-info">找到 {{ filteredFontAwesome.length }} 个图标</div>
+                  <div class="icon-grid">
+                    <button
+                      v-for="icon in filteredFontAwesome"
+                      :key="icon.value"
+                      class="char-button fa-button"
+                      :title="`${icon.name} (${icon.category})`"
+                      @click="selectCustomBullet(icon)"
+                    >
+                      <i :class="icon.value"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </template>
           <Button last class="popover-btn"><IconDown /></Button>
@@ -256,7 +362,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import api from '@/services'
 import { useMainStore } from '@/store'
@@ -265,6 +371,14 @@ import { FONTS } from '@/configs/font'
 import useTextFormatPainter from '@/hooks/useTextFormatPainter'
 import message from '@/utils/message'
 import { htmlToText } from '@/utils/common'
+import {
+  UNICODE_BULLETS,
+  UNICODE_BY_CATEGORY,
+  FONTAWESOME_BULLETS,
+  FONTAWESOME_BY_CATEGORY,
+  DEFAULT_BULLETS,
+  type BulletIcon
+} from '@/configs/bulletIcons'
 
 import TextColorButton from '@/components/TextColorButton.vue'
 import CheckboxButton from '@/components/CheckboxButton.vue'
@@ -302,6 +416,42 @@ const indentRightPanelVisible = ref(false)
 const bulletListStyleTypeOption = ref(['disc', 'circle', 'square'])
 const orderedListStyleTypeOption = ref(['decimal', 'lower-roman', 'upper-roman', 'lower-alpha', 'upper-alpha', 'lower-greek'])
 
+// 项目符号新增功能
+const bulletTabs = [
+  { key: 'recommended', label: '推荐' },
+  { key: 'standard', label: '标准' },
+  { key: 'unicode', label: 'Unicode' },
+  { key: 'fontawesome', label: 'Font Awesome' },
+]
+
+const activeBulletTab = ref('recommended')
+const defaultBullets = ref(DEFAULT_BULLETS)
+const iconSearchQuery = ref('')
+
+// 分类整理的 Unicode 符号
+const unicodeBulletsByCategory = computed(() => {
+  return UNICODE_BY_CATEGORY
+})
+
+// 分类整理的 Font Awesome 图标
+const fontAwesomeBulletsByCategory = computed(() => {
+  return FONTAWESOME_BY_CATEGORY
+})
+
+// Font Awesome 图标搜索过滤
+const filteredFontAwesome = computed(() => {
+  if (!iconSearchQuery.value) {
+    return FONTAWESOME_BULLETS.slice(0, 50) // 默认显示前50个
+  }
+
+  const query = iconSearchQuery.value.toLowerCase()
+  return FONTAWESOME_BULLETS.filter(icon =>
+    icon.name.toLowerCase().includes(query) ||
+    icon.value.toLowerCase().includes(query) ||
+    icon.category.toLowerCase().includes(query)
+  ).slice(0, 50) // 最多显示50个结果
+})
+
 const link = ref('')
 const linkPopoverVisible = ref(false)
 const AIPopoverVisible = ref(false)
@@ -327,6 +477,36 @@ const removeLink = () => {
   emitRichTextCommand('link')
   linkPopoverVisible.value = false
 }
+
+// Unicode 符号相关方法
+const selectCustomBullet = (bullet: BulletIcon) => {
+  let command
+
+  if (bullet.type === 'unicode') {
+    command = {
+      type: 'custom',
+      char: bullet.value,
+      font: bullet.font || ''
+    }
+  } else if (bullet.type === 'fontawesome') {
+    command = {
+      type: 'fontawesome',
+      class: bullet.value,
+      font: 'Font Awesome'
+    }
+  } else {
+    // 默认处理
+    command = {
+      type: 'custom',
+      char: bullet.value,
+      font: bullet.font || ''
+    }
+  }
+
+  emitRichTextCommand('bulletList', command)
+  bulletListPanelVisible.value = false
+}
+
 
 const execAI = async (command: string) => {
   AIPopoverVisible.value = false
@@ -387,6 +567,161 @@ const execAI = async (command: string) => {
     border-top-color: transparent;
     border-radius: 50%;
     animation: spinner .8s linear infinite;
+  }
+}
+
+// 项目符号面板样式
+.bullet-panel {
+  width: 320px;
+  max-height: 400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.bullet-tabs {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f5f5f5;
+
+  .tab-button {
+    flex: 1;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba($themeColor, 0.05);
+    }
+
+    &.active {
+      background: white;
+      color: $themeColor;
+      font-weight: 500;
+      border-bottom: 2px solid $themeColor;
+      margin-bottom: -1px;
+    }
+  }
+}
+
+.bullet-section {
+  padding: 12px;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.section-title {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.category-group {
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.category-name {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+}
+
+.char-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  border-radius: 3px;
+  font-size: 16px;
+
+  &:hover {
+    border-color: $themeColor;
+    background: rgba($themeColor, 0.1);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .unicode-char {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  i {
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+.fa-button {
+  i {
+    font-size: 16px !important;
+  }
+}
+
+.search-box {
+  margin-bottom: 10px;
+}
+
+.search-info {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  background: #f5f5f5;
+  border-radius: 3px;
+}
+
+.custom-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.custom-preview {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+
+  .preview-list {
+    margin-top: 4px;
+    padding-left: 20px;
+
+    li {
+      color: #333;
+      font-size: 14px;
+    }
   }
 }
 .row {
