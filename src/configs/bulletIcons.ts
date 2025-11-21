@@ -11,7 +11,6 @@ export const UNICODE_BULLETS: BulletIcon[] = [
   // 基础几何（Wingding 支持）
   { type: 'unicode', value: '●', name: '实心圆', category: '基础' },
   { type: 'unicode', value: '○', name: '空心圆', category: '基础' },
-  { type: 'unicode', value: '■', name: '实心方块', category: '基础' },
   { type: 'unicode', value: '□', name: '空心方块', category: '基础' },
   { type: 'unicode', value: '▲', name: '实心三角', category: '基础' },
   { type: 'unicode', value: '△', name: '空心三角', category: '基础' },
