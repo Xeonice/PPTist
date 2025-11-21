@@ -371,7 +371,6 @@ const bulletListStyleTypeOption = ref([
   'disc',
   'circle',
   'square',
-  'unicode:■:', // 实心方块
   'unicode:□:', // 空心方块
   'unicode:◆:', // 实心菱形
   'unicode:✓:', // 勾选
