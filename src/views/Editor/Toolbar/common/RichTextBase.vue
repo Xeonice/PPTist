@@ -188,17 +188,79 @@
           v-tooltip="'项目符号'"
           @click="emitRichTextCommand('bulletList')"
         ><IconList /></Button>
-        <Popover trigger="click" v-model:value="bulletListPanelVisible">
+        <Popover trigger="click" v-model:value="bulletListPanelVisible" placement="bottom-start">
           <template #content>
-            <div class="list-wrap">
-              <ul class="list" 
-                v-for="item in bulletListStyleTypeOption" 
-                :key="item" 
-                :style="{ listStyleType: item }"
-                @click="emitRichTextCommand('bulletList', item)"
-              >
-                <li class="list-item" v-for="key in 3" :key="key"><span></span></li>
-              </ul>
+            <div class="bullet-panel">
+              <!-- Tab 切换 -->
+              <div class="bullet-tabs">
+                <button
+                  v-for="tab in bulletTabs"
+                  :key="tab.key"
+                  :class="['tab-button', { active: activeBulletTab === tab.key }]"
+                  @click="activeBulletTab = tab.key"
+                >
+                  {{ tab.label }}
+                </button>
+              </div>
+
+              <!-- 标准样式选项 -->
+              <div v-if="activeBulletTab === 'standard'" class="bullet-section">
+                <div class="list-wrap">
+                  <ul class="list"
+                    v-for="item in bulletListStyleTypeOption"
+                    :key="item"
+                    :style="{ listStyleType: item.startsWith('unicode:') ? 'none' : item }"
+                    @click="emitRichTextCommand('bulletList', item)"
+                  >
+                    <li
+                      class="list-item"
+                      :class="{ 'unicode-item': item.startsWith('unicode:') }"
+                      :data-bullet="item.startsWith('unicode:') ? item.split(':')[1] : ''"
+                      v-for="key in 3"
+                      :key="key"
+                    ><span></span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 推荐符号 -->
+              <div v-if="activeBulletTab === 'recommended'" class="bullet-section">
+                <div class="char-grid">
+                  <button
+                    v-for="bullet in defaultBullets"
+                    :key="bullet.value"
+                    class="char-button"
+                    :title="bullet.name"
+                    @click="selectCustomBullet(bullet)"
+                  >
+                    <span v-if="bullet.type === 'unicode'" class="unicode-char">{{ bullet.value }}</span>
+                    <i v-else-if="bullet.type === 'fontawesome'" :class="bullet.value"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Unicode 符号分类 -->
+              <div v-if="activeBulletTab === 'unicode'" class="bullet-section">
+                <div
+                  v-for="(chars, category) in unicodeBulletsByCategory"
+                  :key="category"
+                  class="category-group"
+                >
+                  <div class="category-name">{{ category }}</div>
+                  <div class="char-grid">
+                    <button
+                      v-for="char in chars"
+                      :key="char.value"
+                      class="char-button"
+                      :title="char.name"
+                      @click="selectCustomBullet(char)"
+                    >
+                      <span class="unicode-char">{{ char.value }}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </template>
           <Button last class="popover-btn"><IconDown /></Button>
@@ -256,7 +318,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import api from '@/services'
 import { useMainStore } from '@/store'
@@ -265,6 +327,11 @@ import { FONTS } from '@/configs/font'
 import useTextFormatPainter from '@/hooks/useTextFormatPainter'
 import message from '@/utils/message'
 import { htmlToText } from '@/utils/common'
+import {
+  UNICODE_BY_CATEGORY,
+  DEFAULT_BULLETS,
+  type BulletIcon
+} from '@/configs/bulletIcons'
 
 import TextColorButton from '@/components/TextColorButton.vue'
 import CheckboxButton from '@/components/CheckboxButton.vue'
@@ -299,8 +366,32 @@ const orderedListPanelVisible = ref(false)
 const indentLeftPanelVisible = ref(false)
 const indentRightPanelVisible = ref(false)
 
-const bulletListStyleTypeOption = ref(['disc', 'circle', 'square'])
+// 标准列表样式（包含 CSS 标准样式和常用 Unicode 符号）
+const bulletListStyleTypeOption = ref([
+  'disc',
+  'circle',
+  'square',
+  'unicode:□:', // 空心方块
+  'unicode:◆:', // 实心菱形
+  'unicode:✓:', // 勾选
+  'unicode:➤:', // 三角箭头
+])
 const orderedListStyleTypeOption = ref(['decimal', 'lower-roman', 'upper-roman', 'lower-alpha', 'upper-alpha', 'lower-greek'])
+
+// 项目符号新增功能
+const bulletTabs = [
+  { key: 'standard', label: '标准' },
+  { key: 'recommended', label: '推荐' },
+  { key: 'unicode', label: 'Unicode' },
+]
+
+const activeBulletTab = ref('standard')
+const defaultBullets = ref(DEFAULT_BULLETS)
+
+// 分类整理的 Unicode 符号
+const unicodeBulletsByCategory = computed(() => {
+  return UNICODE_BY_CATEGORY
+})
 
 const link = ref('')
 const linkPopoverVisible = ref(false)
@@ -327,6 +418,26 @@ const removeLink = () => {
   emitRichTextCommand('link')
   linkPopoverVisible.value = false
 }
+
+// Unicode 符号相关方法
+const selectCustomBullet = (bullet: BulletIcon) => {
+  let value
+
+  if (bullet.type === 'unicode') {
+    value = `unicode:${bullet.value}:${bullet.font || ''}`
+  }
+  else if (bullet.type === 'fontawesome') {
+    value = `fontawesome:${bullet.value}`
+  }
+  else {
+    // 默认处理
+    value = `unicode:${bullet.value}:${bullet.font || ''}`
+  }
+
+  emitRichTextCommand('bulletList', value)
+  bulletListPanelVisible.value = false
+}
+
 
 const execAI = async (command: string) => {
   AIPopoverVisible.value = false
@@ -389,6 +500,131 @@ const execAI = async (command: string) => {
     animation: spinner .8s linear infinite;
   }
 }
+
+// 项目符号面板样式
+.bullet-panel {
+  width: 320px;
+  max-height: 400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.bullet-tabs {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f5f5f5;
+
+  .tab-button {
+    flex: 1;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba($themeColor, 0.05);
+    }
+
+    &.active {
+      background: white;
+      color: $themeColor;
+      font-weight: 500;
+      border-bottom: 2px solid $themeColor;
+      margin-bottom: -1px;
+    }
+  }
+}
+
+.bullet-section {
+  padding: 12px;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.section-title {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.category-group {
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.category-name {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+}
+
+.char-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  border-radius: 3px;
+  font-size: 16px;
+
+  &:hover {
+    border-color: $themeColor;
+    background: rgba($themeColor, 0.1);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .unicode-char {
+    font-size: 16px;
+    line-height: 1;
+  }
+}
+
+.custom-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.custom-preview {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+
+  .preview-list {
+    margin-top: 4px;
+    padding-left: 20px;
+
+    li {
+      color: #333;
+      font-size: 14px;
+    }
+  }
+}
 .row {
   width: 100%;
   display: flex;
@@ -407,7 +643,6 @@ const execAI = async (command: string) => {
   }
 }
 .list-wrap {
-  width: 176px;
   color: #666;
   padding: 8px;
   margin: -12px;
@@ -424,12 +659,6 @@ const execAI = async (command: string) => {
     margin-right: 8px;
   }
 
-  &:nth-child(4),
-  &:nth-child(5),
-  &:nth-child(6) {
-    margin-top: 8px;
-  }
-
   &:hover {
     color: $themeColor;
 
@@ -437,7 +666,9 @@ const execAI = async (command: string) => {
       background-color: $themeColor;
     }
   }
+
 }
+
 .list-item {
   width: 24px;
   height: 12px;
@@ -452,6 +683,12 @@ const execAI = async (command: string) => {
     position: absolute;
     top: 8px;
     background-color: #666;
+  }
+
+  // Unicode 自定义符号使用 ::marker 伪元素
+  &.unicode-item::marker {
+    content: attr(data-bullet) ' ';
+    font-size: 12px;
   }
 }
 .popover-btn {

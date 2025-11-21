@@ -207,13 +207,14 @@ const execCommand = ({ target, action }: RichTextCommand) => {
       textIndentCommand(editorView, +item.value)
     }
     else if (item.command === 'bulletList') {
-      const listStyleType = item.value || ''
       const { bullet_list: bulletList, list_item: listItem } = editorView.state.schema.nodes
       const textStyle = {
         color: richTextAttrs.value.color,
         fontsize: richTextAttrs.value.fontsize
       }
-      toggleList(bulletList, listItem, listStyleType, textStyle)(editorView.state, editorView.dispatch)
+
+      const listStyleTypeValue = item.value || ''
+      toggleList(bulletList, listItem, listStyleTypeValue, textStyle)(editorView.state, editorView.dispatch)
     }
     else if (item.command === 'orderedList') {
       const listStyleType = item.value || ''

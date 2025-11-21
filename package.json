@@ -16,6 +16,7 @@
   "homepage": "https://github.com/pipipi-pikachu/PPTist",
   "dependencies": {
     "@douglasdong/ppteditor-types": "^1.0.0",
+    "@fortawesome/fontawesome-free": "^7.1.0",
     "@icon-park/vue-next": "^1.4.2",
     "animate.css": "^4.1.1",
     "axios": "^1.7.9",

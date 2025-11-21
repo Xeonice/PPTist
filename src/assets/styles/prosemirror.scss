@@ -36,6 +36,54 @@
     }
   }
 
+  // 自定义项目符号样式
+  ul[data-custom-bullet="true"] {
+    list-style: none;
+    padding-inline-start: 1.5em;
+
+    li {
+      position: relative;
+      padding-left: 0.5em;
+
+      &::before {
+        content: var(--bullet-content, '•');
+        position: absolute;
+        left: -1.2em;
+        font-family: var(--bullet-font, inherit);
+        font-size: 1em;
+        color: var(--bullet-color, inherit);
+        line-height: inherit;
+      }
+    }
+  }
+
+  // Font Awesome 项目符号样式
+  ul[data-fontawesome-bullet="true"] {
+    list-style: none;
+    padding-inline-start: 1.5em;
+
+    li {
+      position: relative;
+      padding-left: 0.5em;
+
+      &::before {
+        font-family: "Font Awesome 7 Free" !important;
+        font-weight: var(--fa-font-weight, 900);
+        content: var(--bullet-icon);
+        position: absolute;
+        left: -1.2em;
+        font-size: 1em;
+        color: var(--bullet-color, inherit);
+        line-height: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+      }
+    }
+  }
+
   ol {
     list-style-type: decimal;
     padding-inline-start: 1.25em;
