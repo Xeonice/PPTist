@@ -380,12 +380,12 @@ const orderedListStyleTypeOption = ref(['decimal', 'lower-roman', 'upper-roman',
 
 // 项目符号新增功能
 const bulletTabs = [
-  { key: 'recommended', label: '推荐' },
   { key: 'standard', label: '标准' },
+  { key: 'recommended', label: '推荐' },
   { key: 'unicode', label: 'Unicode' },
 ]
 
-const activeBulletTab = ref('recommended')
+const activeBulletTab = ref('standard')
 const defaultBullets = ref(DEFAULT_BULLETS)
 
 // 分类整理的 Unicode 符号
