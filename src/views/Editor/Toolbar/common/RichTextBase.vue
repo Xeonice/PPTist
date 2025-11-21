@@ -209,10 +209,16 @@
                   <ul class="list"
                     v-for="item in bulletListStyleTypeOption"
                     :key="item"
-                    :style="{ listStyleType: item }"
+                    :style="{ listStyleType: item.startsWith('unicode:') ? 'none' : item }"
                     @click="emitRichTextCommand('bulletList', item)"
                   >
-                    <li class="list-item" v-for="key in 3" :key="key"><span></span></li>
+                    <li
+                      class="list-item"
+                      :class="{ 'unicode-item': item.startsWith('unicode:') }"
+                      :data-bullet="item.startsWith('unicode:') ? item.split(':')[1] : ''"
+                      v-for="key in 3"
+                      :key="key"
+                    ><span></span></li>
                   </ul>
                 </div>
               </div>
@@ -372,7 +378,6 @@ import useTextFormatPainter from '@/hooks/useTextFormatPainter'
 import message from '@/utils/message'
 import { htmlToText } from '@/utils/common'
 import {
-  UNICODE_BULLETS,
   UNICODE_BY_CATEGORY,
   FONTAWESOME_BULLETS,
   FONTAWESOME_BY_CATEGORY,
@@ -413,7 +418,17 @@ const orderedListPanelVisible = ref(false)
 const indentLeftPanelVisible = ref(false)
 const indentRightPanelVisible = ref(false)
 
-const bulletListStyleTypeOption = ref(['disc', 'circle', 'square'])
+// 标准列表样式（包含 CSS 标准样式和常用 Unicode 符号）
+const bulletListStyleTypeOption = ref([
+  'disc',
+  'circle',
+  'square',
+  'unicode:■:', // 实心方块
+  'unicode:□:', // 空心方块
+  'unicode:◆:', // 实心菱形
+  'unicode:✓:', // 勾选
+  'unicode:➤:', // 三角箭头
+])
 const orderedListStyleTypeOption = ref(['decimal', 'lower-roman', 'upper-roman', 'lower-alpha', 'upper-alpha', 'lower-greek'])
 
 // 项目符号新增功能
@@ -484,9 +499,11 @@ const selectCustomBullet = (bullet: BulletIcon) => {
 
   if (bullet.type === 'unicode') {
     value = `unicode:${bullet.value}:${bullet.font || ''}`
-  } else if (bullet.type === 'fontawesome') {
+  }
+  else if (bullet.type === 'fontawesome') {
     value = `fontawesome:${bullet.value}`
-  } else {
+  }
+  else {
     // 默认处理
     value = `unicode:${bullet.value}:${bullet.font || ''}`
   }
@@ -730,7 +747,6 @@ const execAI = async (command: string) => {
   }
 }
 .list-wrap {
-  width: 176px;
   color: #666;
   padding: 8px;
   margin: -12px;
@@ -747,12 +763,6 @@ const execAI = async (command: string) => {
     margin-right: 8px;
   }
 
-  &:nth-child(4),
-  &:nth-child(5),
-  &:nth-child(6) {
-    margin-top: 8px;
-  }
-
   &:hover {
     color: $themeColor;
 
@@ -760,7 +770,9 @@ const execAI = async (command: string) => {
       background-color: $themeColor;
     }
   }
+
 }
+
 .list-item {
   width: 24px;
   height: 12px;
@@ -775,6 +787,12 @@ const execAI = async (command: string) => {
     position: absolute;
     top: 8px;
     background-color: #666;
+  }
+
+  // Unicode 自定义符号使用 ::marker 伪元素
+  &.unicode-item::marker {
+    content: attr(data-bullet) ' ';
+    font-size: 12px;
   }
 }
 .popover-btn {
