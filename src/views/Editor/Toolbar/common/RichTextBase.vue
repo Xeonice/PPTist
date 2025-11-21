@@ -261,56 +261,6 @@
                 </div>
               </div>
 
-              <!-- Font Awesome 图标 -->
-              <div v-if="activeBulletTab === 'fontawesome'" class="bullet-section">
-                <!-- 搜索框 -->
-                <div class="search-box">
-                  <Input
-                    v-model:value="iconSearchQuery"
-                    placeholder="搜索图标..."
-                    size="small"
-                  />
-                </div>
-
-                <!-- 按分类显示 -->
-                <div v-if="!iconSearchQuery" class="fa-categories">
-                  <div
-                    v-for="(icons, category) in fontAwesomeBulletsByCategory"
-                    :key="category"
-                    class="category-group"
-                  >
-                    <div class="category-name">{{ category }}</div>
-                    <div class="icon-grid">
-                      <button
-                        v-for="icon in icons"
-                        :key="icon.value"
-                        class="char-button fa-button"
-                        :title="icon.name"
-                        @click="selectCustomBullet(icon)"
-                      >
-                        <i :class="icon.value"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 搜索结果 -->
-                <div v-else class="search-results">
-                  <div class="search-info">找到 {{ filteredFontAwesome.length }} 个图标</div>
-                  <div class="icon-grid">
-                    <button
-                      v-for="icon in filteredFontAwesome"
-                      :key="icon.value"
-                      class="char-button fa-button"
-                      :title="`${icon.name} (${icon.category})`"
-                      @click="selectCustomBullet(icon)"
-                    >
-                      <i :class="icon.value"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </template>
           <Button last class="popover-btn"><IconDown /></Button>
@@ -379,8 +329,6 @@ import message from '@/utils/message'
 import { htmlToText } from '@/utils/common'
 import {
   UNICODE_BY_CATEGORY,
-  FONTAWESOME_BULLETS,
-  FONTAWESOME_BY_CATEGORY,
   DEFAULT_BULLETS,
   type BulletIcon
 } from '@/configs/bulletIcons'
@@ -436,35 +384,14 @@ const bulletTabs = [
   { key: 'recommended', label: '推荐' },
   { key: 'standard', label: '标准' },
   { key: 'unicode', label: 'Unicode' },
-  { key: 'fontawesome', label: 'Font Awesome' },
 ]
 
 const activeBulletTab = ref('recommended')
 const defaultBullets = ref(DEFAULT_BULLETS)
-const iconSearchQuery = ref('')
 
 // 分类整理的 Unicode 符号
 const unicodeBulletsByCategory = computed(() => {
   return UNICODE_BY_CATEGORY
-})
-
-// 分类整理的 Font Awesome 图标
-const fontAwesomeBulletsByCategory = computed(() => {
-  return FONTAWESOME_BY_CATEGORY
-})
-
-// Font Awesome 图标搜索过滤
-const filteredFontAwesome = computed(() => {
-  if (!iconSearchQuery.value) {
-    return FONTAWESOME_BULLETS.slice(0, 50) // 默认显示前50个
-  }
-
-  const query = iconSearchQuery.value.toLowerCase()
-  return FONTAWESOME_BULLETS.filter(icon =>
-    icon.name.toLowerCase().includes(query) ||
-    icon.value.toLowerCase().includes(query) ||
-    icon.category.toLowerCase().includes(query)
-  ).slice(0, 50) // 最多显示50个结果
 })
 
 const link = ref('')
@@ -648,12 +575,6 @@ const execAI = async (command: string) => {
   gap: 4px;
 }
 
-.icon-grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 4px;
-}
-
 .char-button {
   width: 32px;
   height: 32px;
@@ -681,30 +602,6 @@ const execAI = async (command: string) => {
     font-size: 16px;
     line-height: 1;
   }
-
-  i {
-    font-size: 14px;
-    color: #333;
-  }
-}
-
-.fa-button {
-  i {
-    font-size: 16px !important;
-  }
-}
-
-.search-box {
-  margin-bottom: 10px;
-}
-
-.search-info {
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 8px;
-  padding: 4px 8px;
-  background: #f5f5f5;
-  border-radius: 3px;
 }
 
 .custom-input {
